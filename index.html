@@ -183,18 +183,6 @@
             transition: transform 0.5s;
         }
 
-        .envelope-back {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #a31010;
-            border-radius: 5px;
-            z-index: 1;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
         .card {
             position: absolute;
             bottom: 0;
@@ -217,87 +205,178 @@
             filter: sepia(10%);
         }
 
+
+        /* --- PHONG BÌ HYBRID: NẮP TRÒN - TÚI THẲNG (Gọn gàng nhất) --- */
+
+        /* --- PHONG BÌ SOFT (BO TRÒN NHẸ) --- */
+
+        /* 1. Mặt lưng: Bo 4 góc 10px cho mềm */
+        .envelope-back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #4a0404;
+            border-radius: 0 0 10px 10px;
+            /* <--- Bo góc ở đây */
+            z-index: 1;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        /* 2. Cánh bên Trái */
         .pocket-left {
             position: absolute;
             top: 0;
             left: 0;
-            width: 0;
-            height: 0;
-            border-left: 150px solid #bd1e1e;
-            border-top: 100px solid transparent;
-            border-bottom: 100px solid transparent;
-            border-radius: 5px 0 0 5px;
+            width: 100%;
+            height: 100%;
+            border: none;
+
+            /* Bo 2 góc bên trái khớp với mặt lưng */
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+
+            /* Cắt hình tam giác */
+            clip-path: polygon(0 0, 0 100%, 55% 53%);
+
+            background: linear-gradient(135deg, #8E0E0E 0%, #a31010 100%);
+            background-image: url('https://www.transparenttextures.com/patterns/felt.png'), linear-gradient(135deg, #8E0E0E 0%, #a31010 100%);
+            background-blend-mode: multiply;
+
             z-index: 10;
             pointer-events: none;
+            filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
         }
 
+        /* 3. Cánh bên Phải */
         .pocket-right {
             position: absolute;
             top: 0;
-            right: 0;
-            width: 0;
-            height: 0;
-            border-right: 150px solid #cf2323;
-            border-top: 100px solid transparent;
-            border-bottom: 100px solid transparent;
-            border-radius: 0 5px 5px 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+
+            /* Bo 2 góc bên phải khớp với mặt lưng */
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+
+            /* Cắt hình tam giác */
+            clip-path: polygon(100% 0, 100% 100%, 45% 53%);
+
+            background: linear-gradient(225deg, #750808 0%, #8E0E0E 100%);
+            background-image: url('https://www.transparenttextures.com/patterns/felt.png'), linear-gradient(225deg, #750808 0%, #8E0E0E 100%);
+            background-blend-mode: multiply;
+
             z-index: 11;
             pointer-events: none;
+            filter: drop-shadow(-2px 4px 6px rgba(0, 0, 0, 0.2));
         }
 
+        /* 4. Đáy phong bì */
         .pocket-bottom {
             position: absolute;
-            bottom: 0;
+            top: 0;
             left: 0;
-            width: 0;
-            height: 0;
-            border-bottom: 110px solid #a31010;
-            border-left: 150px solid transparent;
-            border-right: 150px solid transparent;
-            border-radius: 0 0 5px 5px;
+            width: 100%;
+            height: 100%;
+            border: none;
+
+            /* Bo 2 góc dưới đáy khớp với mặt lưng */
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+
+            /* Đỉnh nhọn cao lên vị trí 40% */
+            clip-path: polygon(0 100%, 100% 100%, 50% 40%);
+
+            background: linear-gradient(to top, #5a0505 0%, #8E0E0E 100%);
+            background-image: url('https://www.transparenttextures.com/patterns/felt.png'), linear-gradient(to top, #5a0505 0%, #8E0E0E 100%);
+            background-blend-mode: multiply;
+
             z-index: 12;
             pointer-events: none;
+            filter: drop-shadow(0 -4px 6px rgba(0, 0, 0, 0.3));
         }
 
+        /* 5. Nắp phong bì (LÀM CONG NHẸ CHO MỀM) */
         .envelope-lid {
             position: absolute;
             top: 0;
             left: 0;
-            width: 0;
-            height: 0;
-            border-top: 110px solid #d62828;
-            border-left: 150px solid transparent;
-            border-right: 150px solid transparent;
-            border-radius: 5px 5px 0 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+
+            /* Thay vì cắt nhọn hoắt, ta dùng border-radius để nắp cong hình bán nguyệt */
+            /* Bỏ clip-path cũ đi để dùng border-radius */
+            clip-path: none;
+            height: 43%;
+            /* Giảm chiều cao xuống để nắp vừa vặn */
+            border-bottom-left-radius: 50% 100%;
+            /* Tạo độ cong mềm */
+            border-bottom-right-radius: 50% 100%;
+
+            background: linear-gradient(180deg, #d62828 0%, #a31010 100%);
+            background-image: url('https://www.transparenttextures.com/patterns/felt.png'), linear-gradient(180deg, #d62828 0%, #a31010 100%);
+            background-blend-mode: multiply;
+
             transform-origin: top;
             transition: transform 0.8s ease-in-out, z-index 0.2s;
             z-index: 20;
+
+            filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.3));
         }
 
+        /* --- CHỈNH SỬA VỊ TRÍ CON DẤU --- */
         .wax-seal {
             width: 50px;
             height: 50px;
             background: radial-gradient(circle at 30% 30%, #f7d78c, #c9962f);
-            border: 1px solid #c9962f;
+            border: 1px solid #b8860b;
             border-radius: 50%;
-            position: absolute;
-            top: 85px;
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            color: #754e08;
-            font-size: 1.2rem;
-            z-index: 100;
+
+            /* --- VỊ TRÍ MỚI: XUỐNG DƯỚI & GIỮA TẤM ĐÁY --- */
+            position: absolute;
+            top: 65%;
+            /* Đẩy xuống sâu hơn (khoảng 2/3 phong bì) */
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            z-index: 30;
+            /* Nằm trên cùng */
             transition: all 0.5s ease;
         }
 
+        /* Giữ nguyên phần icon bên trong */
         .wax-seal::before {
-            content: '❤';
-            font-size: 1.4rem;
+            /* Mã ký tự chữ Song Hỷ */
+            content: '囍';
+
+            /* Dùng font có chân (Serif) để nét chữ dày dặn, giống như khắc triện */
+            font-family: 'Playfair Display', serif;
+
+            /* Tăng kích thước lớn một chút cho đầy đặn con dấu */
+            font-size: 2rem;
+
+            /* Màu nâu đậm để tạo hiệu ứng khắc chìm */
+            color: #754e08;
+
+            /* Căn giữa */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+
+            /* Chỉnh vị trí tí xíu nếu cần */
+            padding-bottom: 2px;
+            opacity: 0.9;
         }
 
         .envelope-wrapper.open .envelope-lid {
@@ -312,10 +391,10 @@
             z-index: 5;
         }
 
-        .envelope-wrapper.open .wax-seal {
+        /* .envelope-wrapper.open .wax-seal {
             opacity: 0;
             transform: translateX(-50%) scale(0.5);
-        }
+        } */
 
         /* --- SCROLL ANIMATION --- */
         .scroll-element {
@@ -911,6 +990,50 @@
             visibility: visible;
             transform: translateY(0);
         }
+
+        /* --- ALBUM MASONRY (CÁI DÀI CÁI NGẮN) --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* Chia 2 cột */
+            grid-auto-rows: 200px;
+            /* Chiều cao CỐ ĐỊNH của 1 ô nhỏ (bạn có thể chỉnh số này) */
+            gap: 10px;
+            padding: 0 10px;
+            margin-top: 20px;
+            /* Đảm bảo grid lấp đầy các khoảng trống nếu có */
+            grid-auto-flow: dense;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background: #eee;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+            /* Lấp đầy ô grid */
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Cực quan trọng: Cắt ảnh vừa khung, không méo */
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* --- CLASS CHO ẢNH DỌC (CAO) --- */
+        /* Class này sẽ làm ảnh chiếm chiều cao bằng 2 ảnh thường cộng lại */
+        .gallery-item.tall {
+            grid-row: span 2;
+        }
     </style>
 </head>
 
@@ -931,8 +1054,7 @@
             <div class="envelope-wrapper" id="envelope">
                 <div class="envelope-back"></div>
                 <div class="card">
-                    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
-                        alt="Wedding">
+                    <img src="./assets/wd3.JPG" alt="Wedding">
                 </div>
                 <div class="pocket-left"></div>
                 <div class="pocket-right"></div>
@@ -947,8 +1069,9 @@
             <div class="content-block" style="padding-top: 0;">
                 <div class="scroll-element scroll-up">
                     <p style="font-size: 0.9rem; color: #888; margin-bottom: 5px; text-transform: uppercase;">Trân trọng
-                        kính mời</p>
-                    <h3 style="font-size: 1.6rem; font-family: 'Dancing Script'; margin-bottom: 10px;">Quý Khách</h3>
+                        kính mời:</p>
+                    <h3 id="guest-name" style="font-size: 1.6rem; font-family: 'Dancing Script'; margin-bottom: 10px;">
+                        Quý Khách</h3>
                     <p style="color: #555; line-height: 1.6;">Tham dự lễ thành hôn của gia đình chúng tôi:</p>
                 </div>
 
@@ -966,13 +1089,12 @@
                     <div class="family-box scroll-element scroll-from-left">
                         <h4>Nhà Trai</h4>
                         <p>Ông: Vũ Hồng Sơn</p>
-                        <p>Bà: Nguyễn Thị Hải</p>
+                        <p>Bà: Lương Thị Lan Hương</p>
                     </div>
 
                     <div class="family-box scroll-element scroll-from-right">
                         <h4>Nhà Gái</h4>
-                        <p>Ông: Bùi Văn Ba</p>
-                        <p>Bà: Lê Thị Tư</p>
+                        <p>Bà: Bùi Thị Hái</p>
                     </div>
                 </div>
             </div>
@@ -992,13 +1114,13 @@
                     <div class="calendar-grid" id="calendar-days"></div>
                 </div>
                 <h3 style="font-family: 'Playfair Display'; margin-top: 20px;">Thứ 7 . 20 . 12 . 2025</h3>
-                <p style="color: #777; margin-top: 5px;">Vào lúc 17:00 PM</p>
+                <p style="color: #777; margin-top: 5px;">Vào lúc 16:30 PM</p>
             </div>
 
             <div class="content-block scroll-element scroll-up">
                 <h2 class="section-title">Địa Điểm</h2>
                 <p style="font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">
-                    Nhà Văn Hoá Phú Nhiêu
+                    SỰ KIỆN HẰNG HÂN
                 </p>
                 <p style="color: #666; font-size: 0.9rem; margin-top: 5px; margin-bottom: 20px;">Xã Phú Xuyên, TP. Hà
                     Nội
@@ -1007,28 +1129,28 @@
                     <img src="https://media.wired.com/photos/59269cd37034dc5f91bec0f1/master/pass/GoogleMapTA.jpg"
                         alt="Map">
                 </div>
-                <a href="https://maps.app.goo.gl/fXkS9XYLuTd2WV3o8" target="_blank" class="map-link">Xem chỉ đường</a>
+                <a href="https://maps.app.goo.gl/K9fi356pdhHxEUCi6" target="_blank" class="map-link">Xem chỉ đường</a>
             </div>
 
             <div class="content-block scroll-element scroll-up" style="background: #fafafa;">
                 <h2 class="section-title">Timeline</h2>
                 <div style="max-width: 300px; margin: 0 auto;">
                     <div class="timeline-item">
-                        <div class="t-time">17:30</div>
+                        <div class="t-time">15:30</div>
                         <div class="t-content">
                             <h4>Đón Khách</h4>
                             <p>Chụp hình check-in</p>
                         </div>
                     </div>
                     <div class="timeline-item">
-                        <div class="t-time">19:00</div>
+                        <div class="t-time">16:30</div>
                         <div class="t-content">
                             <h4>Khai Tiệc</h4>
                             <p>Làm lễ và dùng tiệc</p>
                         </div>
                     </div>
                     <div class="timeline-item">
-                        <div class="t-time">20:30</div>
+                        <div class="t-time">20:00</div>
                         <div class="t-content">
                             <h4>Party</h4>
                             <p>Giao lưu âm nhạc</p>
@@ -1075,12 +1197,39 @@
                     <p>Chủ TK: VU QUOC PHONG</p>
                 </div>
             </div>
-
-            <div class="content-block scroll-element scroll-up">
+            <div class="content-block">
                 <h2 class="section-title">Album Ảnh Cưới</h2>
                 <p style="font-style: italic; color: #888; margin-bottom: 15px; font-size: 0.9rem;">Những khoảnh khắc
                     đẹp nhất</p>
 
+                <div class="gallery-grid">
+                    <div class="gallery-item tall scroll-element scroll-from-left">
+                        <img src="./assets/wd1.JPG" alt="1">
+                    </div>
+
+                    <div class="gallery-item scroll-element scroll-from-right">
+                        <img src="./assets/wd2.JPG" alt="2">
+                    </div>
+
+                    <div class="gallery-item scroll-element scroll-from-right">
+                        <img src="./assets/wd3.JPG" alt="3">
+                    </div>
+
+
+                    <div class="gallery-item scroll-element scroll-from-left">
+                        <img src="./assets/wd4.JPG" alt="4">
+                    </div>
+
+                    <div class="gallery-item tall scroll-element scroll-from-right">
+                        <img src="./assets/wd5.JPG" alt="5">
+                    </div>
+
+                    <div class="gallery-item scroll-element scroll-from-left">
+                        <img src="./assets/wd6.JPG" alt="6">
+                    </div>
+                </div>
+            </div>
+            <div class="content-block scroll-element scroll-up">
                 <div class="wedding-album-wrapper">
                     <div class="main-stage">
                         <img src="" alt="Wedding Photo" id="current-image" class="active">
@@ -1175,20 +1324,48 @@
         // Danh sách ảnh mẫu (Bạn hãy thay link ảnh của bạn vào đây)
         const albumPhotos = [
             {
-                url: 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600&auto=format&fit=crop',
-                caption: "Ngày hạnh phúc"
+                url: './assets/wd3.JPG',
+                caption: "Nơi tình yêu bắt đầu"
             },
             {
-                url: 'https://images.unsplash.com/photo-1511285560982-1351cdeb9821?q=80&w=600&auto=format&fit=crop',
-                caption: "Cùng nhau bước đi"
+                url: './assets/wd7.JPG',
+                caption: "Ngày đôi mình chung đôi"
             },
             {
-                url: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=600&auto=format&fit=crop',
-                caption: "Khoảnh khắc bình yên"
+                url: './assets/wd8.JPG',
+                caption: "Nắm tay nhau đi khắp thế gian"
             },
             {
-                url: 'https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=600&auto=format&fit=crop',
-                caption: "Hẹn ước trọn đời"
+                url: './assets/wd9.JPG',
+                caption: "Bình yên là khi có anh"
+            },
+            {
+                url: './assets/wd10.JPG',
+                caption: "Đúng người, đúng thời điểm"
+            },
+            {
+                url: './assets/wd11.JPG',
+                caption: "Về chung một mái nhà"
+            },
+            {
+                url: './assets/wd6.JPG',
+                caption: "Mảnh ghép hoàn hảo"
+            },
+            {
+                url: './assets/wd5.JPG',
+                caption: "Cùng nhau già đi nhé"
+            },
+            {
+                url: './assets/wd4.JPG',
+                caption: "Hạnh phúc trọn vẹn"
+            },
+            {
+                url: './assets/wd2.JPG',
+                caption: "Chuyện tình mình đẹp như thơ"
+            },
+            {
+                url: './assets/wd1.JPG',
+                caption: "Mãi mãi một tình yêu"
             }
         ];
 
@@ -1368,6 +1545,26 @@
                 behavior: 'smooth' // Cuộn mượt mà
             });
         }
+
+        /* --- TỰ ĐỘNG LẤY TÊN KHÁCH TỪ URL --- */
+        function checkGuestName() {
+            // 1. Lấy toàn bộ tham số trên thanh địa chỉ
+            const urlParams = new URLSearchParams(window.location.search);
+
+            // 2. Tìm tham số có tên là "k" (viết tắt của Khách) hoặc "guest"
+            // Ví dụ link: thiepcuoi.com?k=Anh%20Nam
+            const guestName = urlParams.get('k') || urlParams.get('guest');
+
+            // 3. Nếu tìm thấy tên thì thay thế vào
+            if (guestName) {
+                // Giải mã ký tự đặc biệt (ví dụ %20 thành khoảng trắng)
+                // và gán vào thẻ h3
+                document.getElementById('guest-name').innerText = guestName;
+            }
+        }
+
+        // Chạy hàm này ngay khi tải trang
+        window.addEventListener('load', checkGuestName);
 
         /* --- KHỞI CHẠY --- */
         window.onload = function () {
