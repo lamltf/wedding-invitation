@@ -444,18 +444,33 @@
             color: #555;
         }
 
-        .calendar-day.active {
+        .calendar-day.active span {
             position: relative;
-            color: #d62828;
-            font-weight: bold;
+            z-index: 2;
         }
 
-        .calendar-day.active::after {
-            content: '❤';
+        .calendar-day.active {
+            position: relative;
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+        }
+
+        .calendar-day.active::before {
+            content: "";
             position: absolute;
-            top: -12px;
-            font-size: 24px;
-            opacity: 0.3;
+            width: 34px;
+            height: 34px;
+            background: var(--primary-color, #ff4d6d);
+            clip-path: path("M17 30s-14-7.4-14-17.5S11 1 17 8.2C23 1 31 4.1 31 11.5S17 30 17 30z");
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
         }
 
         .timeline-item {
@@ -839,7 +854,7 @@
 
         <div id="mainContent" style="display:none;">
 
-            <div class="content-block">
+            <div class="content-block"  style="padding-top: 0;">
                 <div class="scroll-element scroll-up">
                     <p style="font-size: 0.9rem; color: #888; margin-bottom: 5px; text-transform: uppercase;">Trân trọng
                         kính mời</p>
@@ -1027,13 +1042,15 @@
             const container = document.getElementById('calendar-days');
             const date = new Date(year, month - 1, 1);
             const daysInMonth = new Date(year, month, 0).getDate();
+            container.innerHTML = "";
+
             let startDay = date.getDay();
             if (startDay === 0) startDay = 7;
             for (let i = 1; i < startDay; i++) { container.appendChild(document.createElement('div')); }
             for (let i = 1; i <= daysInMonth; i++) {
                 const dayDiv = document.createElement('div');
                 dayDiv.classList.add('calendar-day');
-                dayDiv.innerText = i;
+                dayDiv.innerHTML = `<span>${i}</span>`;
                 if (i === highlightDay) dayDiv.classList.add('active');
                 container.appendChild(dayDiv);
             }
