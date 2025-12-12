@@ -821,6 +821,96 @@
         .download-btn:active {
             transform: scale(0.95);
         }
+
+        /* --- NÚT NHẠC NỀN --- */
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #fff;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 9999;
+            /* Luôn nổi lên trên cùng */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .music-control:hover {
+            transform: scale(1.1);
+        }
+
+        /* Khi nhạc đang chạy thì xoay icon cho sinh động */
+        .music-control.playing {
+            animation: spinMusic 4s linear infinite;
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        @keyframes spinMusic {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* --- NÚT BACK TO TOP (Góc Phải - Dưới Cùng) --- */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            /* Cùng độ cao với nút nhạc */
+            right: 20px;
+            /* Chuyển sang bên PHẢI */
+
+            width: 50px;
+            /* Kích thước bằng nút nhạc cho cân đối */
+            height: 50px;
+            border-radius: 50%;
+
+            background-color: #fff;
+            /* Nền trắng */
+            color: var(--primary-color);
+            /* Mũi tên màu đỏ */
+            border: 2px solid var(--primary-color);
+            /* Viền đỏ */
+
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 9999;
+            /* Luôn nổi lên trên cùng */
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+
+            /* Hiệu ứng ẩn/hiện */
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+            transform: translateY(0) scale(1.1);
+            /* Phóng to nhẹ khi di chuột */
+        }
+
+        /* Class này được JS thêm vào khi cuộn xuống */
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
     </style>
 </head>
 
@@ -854,12 +944,12 @@
 
         <div id="mainContent" style="display:none;">
 
-            <div class="content-block"  style="padding-top: 0;">
+            <div class="content-block" style="padding-top: 0;">
                 <div class="scroll-element scroll-up">
                     <p style="font-size: 0.9rem; color: #888; margin-bottom: 5px; text-transform: uppercase;">Trân trọng
                         kính mời</p>
                     <h3 style="font-size: 1.6rem; font-family: 'Dancing Script'; margin-bottom: 10px;">Quý Khách</h3>
-                    <p style="color: #555; line-height: 1.6;">Tham dự lễ thành hôn của gia đình chúng tôi</p>
+                    <p style="color: #555; line-height: 1.6;">Tham dự lễ thành hôn của gia đình chúng tôi:</p>
                 </div>
 
                 <div class="body-names-group">
@@ -1024,6 +1114,20 @@
         </div>
     </div>
 
+    <!-- nhạc nền  -->
+
+    <audio id="bg-music" loop>
+        <source src="./assets/wedding.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="music-btn" class="music-control" onclick="toggleMusic()">
+        <i class="fa-solid fa-volume-xmark" id="music-icon"></i>
+    </button>
+
+    <button id="back-to-top-btn" class="back-to-top" onclick="scrollToTop()">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
     <script>
         /* --- JS CHO PHẦN CHÍNH --- */
         function autoOpenEnvelope() {
@@ -1161,12 +1265,116 @@
                 toggleModal(false);
             }
         });
+        /* --- CẤU HÌNH NHẠC NỀN (FIX LỖI AUTOPLAY) --- */
+        const bgMusic = document.getElementById('bg-music');
+        const musicBtn = document.getElementById('music-btn');
+        const musicIcon = document.getElementById('music-icon');
+
+        // Hàm bật/tắt nhạc khi bấm vào nút
+        function toggleMusic() {
+            // Nếu nhạc đang tạm dừng -> Bật
+            if (bgMusic.paused) {
+                bgMusic.play().then(() => {
+                    updateMusicUI(true);
+                }).catch(err => {
+                    console.error("Lỗi phát nhạc:", err);
+                });
+            }
+            // Nếu nhạc đang chạy -> Tắt
+            else {
+                bgMusic.pause();
+                updateMusicUI(false);
+            }
+        }
+
+        // Hàm cập nhật giao diện nút bấm (Xoay/Dừng, Icon)
+        function updateMusicUI(isPlaying) {
+            if (isPlaying) {
+                musicBtn.classList.add('playing');
+                musicIcon.classList.remove('fa-volume-xmark');
+                musicIcon.classList.add('fa-music');
+            } else {
+                musicBtn.classList.remove('playing');
+                musicIcon.classList.remove('fa-music');
+                musicIcon.classList.add('fa-volume-xmark');
+            }
+        }
+
+        // --- LOGIC TỰ ĐỘNG PHÁT KHI CÓ TƯƠNG TÁC ---
+        // Thay vì cố phát ngay lập tức, ta chờ người dùng chạm vào web lần đầu tiên
+        function firstInteraction() {
+            // Chỉ phát nếu nhạc chưa chạy
+            if (bgMusic.paused) {
+                bgMusic.play().then(() => {
+                    updateMusicUI(true);
+                }).catch(error => {
+                    console.log("Vẫn chưa được phép phát nhạc, chờ tương tác tiếp theo.");
+                });
+            }
+
+            // Quan trọng: Sau khi chạm lần đầu, gỡ bỏ sự kiện này để không bị lặp lại
+            document.removeEventListener('click', firstInteraction);
+            document.removeEventListener('touchstart', firstInteraction);
+            document.removeEventListener('scroll', firstInteraction);
+        }
+
+        // Gán sự kiện lắng nghe vào toàn bộ trang web
+        // { once: true } nghĩa là chỉ chạy 1 lần duy nhất rồi tự hủy
+        document.addEventListener('click', firstInteraction, { once: true });
+        document.addEventListener('touchstart', firstInteraction, { once: true });
+        document.addEventListener('scroll', firstInteraction, { once: true });
+
+        // --- CÁC HÀM KHÁC CỦA TRANG WEB ---
+        // (Giữ nguyên các hàm lịch, mở phong bì của bạn ở đây)
+
+        function autoOpenEnvelope() {
+            const envelope = document.getElementById('envelope');
+            const mainContent = document.getElementById('mainContent');
+            envelope.classList.add('open');
+
+            // Thử phát nhạc ngay khi phong bì mở (nếu trình duyệt cho phép)
+            bgMusic.play().then(() => updateMusicUI(true)).catch(() => { });
+
+            setTimeout(() => {
+                mainContent.style.display = 'block';
+                initScrollObserver();
+                if (typeof initAlbum === "function") initAlbum();
+            }, 1500);
+        }
+
+        // ... (Các hàm createCalendar, initScrollObserver, initAlbum giữ nguyên) ...
+
+        window.onload = function () {
+            if (typeof createCalendar === "function") createCalendar(2025, 12, 20);
+            setTimeout(autoOpenEnvelope, 1500);
+        };
+
+        /* --- XỬ LÝ NÚT BACK TO TOP --- */
+        const backToTopBtn = document.getElementById('back-to-top-btn');
+
+        window.addEventListener('scroll', () => {
+            // Nếu cuộn quá 300px thì hiện nút
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        // Hàm cuộn mượt lên đầu
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // Cuộn mượt mà
+            });
+        }
 
         /* --- KHỞI CHẠY --- */
         window.onload = function () {
             createCalendar(2025, 12, 20);
             setTimeout(autoOpenEnvelope, 1500);
         };
+
     </script>
 </body>
 
