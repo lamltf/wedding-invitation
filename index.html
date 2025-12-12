@@ -203,6 +203,7 @@
             height: 100%;
             object-fit: cover;
             filter: sepia(10%);
+            object-position: top center;
         }
 
 
@@ -635,6 +636,7 @@
             object-fit: cover;
             opacity: 0;
             transition: opacity var(--album-transition) ease-in-out;
+            object-position: top center;
         }
 
         .main-stage img.active {
@@ -715,6 +717,7 @@
             border-radius: 4px;
             flex-shrink: 0;
             border: 2px solid transparent;
+            object-position: top center;
         }
 
         .thumb.active {
@@ -1014,6 +1017,7 @@
             cursor: pointer;
             width: 100%;
             height: 100%;
+            background: #fff;
             /* Lấp đầy ô grid */
         }
 
@@ -1021,6 +1025,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: top center;
             /* Cực quan trọng: Cắt ảnh vừa khung, không méo */
             transition: transform 0.5s ease;
         }
