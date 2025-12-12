@@ -5,14 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thiệp Cưới: Quốc Phong & Diễm Quỳnh</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link
-        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400&display=swap"
         rel="stylesheet">
+
     <style>
         :root {
-            --primary-color: #8B0000;
-            --gold-color: #D4AF37;
-            --bg-color: #fdfbf7;
+            --primary-color: #8E0E0E;
+            --gold-color: #C5A059;
+            --bg-color: #fcfcfc;
+            --text-color: #333;
+            --album-transition: 0.4s;
         }
 
         * {
@@ -23,39 +27,65 @@
 
         body {
             font-family: 'Quicksand', sans-serif;
-            background-color: #333;
-            /* Màu nền ngoài tối để làm nổi bật thiệp */
+            background-color: #222;
             display: flex;
             justify-content: center;
             min-height: 100vh;
+            color: var(--text-color);
         }
 
         .container {
             width: 100%;
-            max-width: 420px;
+            max-width: 430px;
             background-color: var(--bg-color);
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
             overflow-x: hidden;
             position: relative;
-            opacity: 0;
-            /* Ẩn toàn bộ lúc đầu để load animation */
-            animation: fadeInPage 1s ease-out forwards;
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+            padding-bottom: 50px;
         }
 
-        /* --- KEYFRAMES ANIMATION --- */
+        /* --- KEYFRAMES --- */
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
 
-        /* 1. Hiệu ứng hiện trang web */
-        @keyframes fadeInPage {
             to {
                 opacity: 1;
+                transform: translateX(0);
             }
         }
 
-        /* 2. Hiệu ứng chữ bay từ trên xuống */
-        @keyframes slideDownFade {
+        @keyframes fadeInRight {
             from {
                 opacity: 0;
-                transform: translateY(-50px);
+                transform: translateX(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
             }
 
             to {
@@ -64,82 +94,86 @@
             }
         }
 
-        /* 3. Hiệu ứng Phong bì nổi từ dưới lên */
-        @keyframes floatUp {
-            from {
-                opacity: 0;
-                transform: translateY(100px) scale(0.8);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        /* --- Header Styles --- */
+        /* --- HEADER --- */
         .header {
             text-align: center;
-            padding: 40px 20px;
-            background: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+            padding-top: 50px;
+            position: relative;
+            z-index: 100;
         }
 
-        /* Áp dụng animation cho các thành phần header */
         .save-the-date {
-            font-size: 14px;
+            font-size: 12px;
             letter-spacing: 3px;
             text-transform: uppercase;
-            color: #666;
-            margin-bottom: 20px;
+            color: #888;
+            margin-bottom: 15px;
             opacity: 0;
-            animation: slideDownFade 1s ease-out 0.5s forwards;
-            /* Delay 0.5s */
+            animation: zoomIn 1s ease-out forwards;
         }
 
-        .names {
-            font-family: 'Dancing Script', cursive;
-            font-size: 8vw;
-            /* Auto theo kích thước màn hình */
-            white-space: nowrap;
-            /* Luôn 1 dòng */
-            color: #333;
-            margin-bottom: 10px;
-            opacity: 0;
-            animation: slideDownFade 1s ease-out 0.8s forwards;
-            /* Delay 0.8s */
-        }
-
-        .text-nowrap {
-            font-size: 3vw;
-            white-space: nowrap;
-        }
-
-        .date-highlight {
-            font-size: 18px;
-            color: var(--primary-color);
-            border-top: 1px solid #ddd;
-            border-bottom: 1px solid #ddd;
-            display: inline-block;
-            padding: 10px 30px;
-            margin-top: 10px;
-            opacity: 0;
-            animation: slideDownFade 1s ease-out 1.1s forwards;
-            /* Delay 1.1s */
-        }
-
-        /* --- ENVELOPE STYLES --- */
-        .envelope-section {
-            height: 400px;
+        .names-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            perspective: 1000px;
-            margin: 20px 0;
+            gap: 8px;
+            margin-bottom: 10px;
+            width: 100%;
+            white-space: nowrap;
+            flex-wrap: nowrap;
+        }
 
-            /* Animation cho phong bì nổi lên */
+        .name-part {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1.2;
+            font-size: clamp(1rem, 5vw, 1.5rem);
+        }
+
+        .name-part.left {
             opacity: 0;
-            animation: floatUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 1.5s forwards;
-            /* Delay 1.5s để chờ chữ xong */
+            animation: fadeInLeft 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s forwards;
+        }
+
+        .name-part.symbol {
+            font-size: clamp(1rem, 4vw, 1.8rem);
+            font-weight: 400;
+            font-style: italic;
+            color: #999;
+            opacity: 0;
+            animation: zoomIn 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s forwards;
+        }
+
+        .name-part.right {
+            opacity: 0;
+            animation: fadeInRight 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s forwards;
+        }
+
+        .date-highlight {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            color: #666;
+            margin-top: 5px;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            display: inline-block;
+            padding: 6px 30px;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.8s forwards;
+        }
+
+        /* --- PHONG BÌ CHÍNH (Top) --- */
+        .envelope-section {
+            height: 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 160px;
+            perspective: 1000px;
+            opacity: 0;
+            animation: fadeInUp 1.2s ease-out 1.2s forwards;
         }
 
         .envelope-wrapper {
@@ -149,295 +183,628 @@
             transition: transform 0.5s;
         }
 
-        .envelope {
-            position: relative;
+        .envelope-back {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            background-color: var(--primary-color);
-            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .envelope::before {
-            /* Nắp trái */
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 0;
-            border-top: 100px solid transparent;
-            border-bottom: 100px solid transparent;
-            border-left: 150px solid #9c0b0b;
-            z-index: 3;
-        }
-
-        .envelope::after {
-            /* Nắp phải */
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 0;
-            height: 0;
-            border-top: 100px solid transparent;
-            border-bottom: 100px solid transparent;
-            border-right: 150px solid #9c0b0b;
-            z-index: 3;
-        }
-
-        .envelope-bottom {
-            /* Nắp đáy */
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 0;
-            border-left: 150px solid transparent;
-            border-right: 150px solid transparent;
-            border-bottom: 110px solid #800000;
-            z-index: 4;
-        }
-
-        .envelope-lid {
-            /* Nắp mở */
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 0;
-            border-left: 150px solid transparent;
-            border-right: 150px solid transparent;
-            border-top: 110px solid #a51313;
-            transform-origin: top;
-            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), z-index 0.2s;
-            z-index: 5;
+            background: #a31010;
+            border-radius: 5px;
+            z-index: 1;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         .card {
-            /* Thiệp bên trong */
             position: absolute;
-            top: 10px;
-            left: 15px;
-            width: 270px;
-            height: 180px;
-            background: white;
-            z-index: 2;
-            transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
-            /* Chuyển động mượt hơn */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border: 5px solid #fff;
+            bottom: 0;
+            left: 25px;
+            width: 250px;
+            height: 300px;
+            background: #fff;
+            padding: 6px;
+            z-index: 5;
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            transition: transform 1.5s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.8s;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            filter: sepia(10%);
         }
 
-        /* Trạng thái OPEN */
-        .envelope-wrapper.open .envelope-lid {
-            transform: rotateX(180deg);
-            z-index: 1;
-            transition-delay: 0s;
+        .pocket-left {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 150px solid #bd1e1e;
+            border-top: 100px solid transparent;
+            border-bottom: 100px solid transparent;
+            border-radius: 5px 0 0 5px;
+            z-index: 10;
+            pointer-events: none;
         }
 
-        .envelope-wrapper.open .card {
-            /* Thiệp bay lên cao hơn và phóng to nhẹ */
-            transform: translateY(-140px) scale(1.1);
-            z-index: 6;
-            transition-delay: 0.4s;
-            /* Chờ nắp mở xong mới bay lên */
+        .pocket-right {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-right: 150px solid #cf2323;
+            border-top: 100px solid transparent;
+            border-bottom: 100px solid transparent;
+            border-radius: 0 5px 5px 0;
+            z-index: 11;
+            pointer-events: none;
+        }
+
+        .pocket-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-bottom: 110px solid #a31010;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-radius: 0 0 5px 5px;
+            z-index: 12;
+            pointer-events: none;
+        }
+
+        .envelope-lid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-top: 110px solid #d62828;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-radius: 5px 5px 0 0;
+            transform-origin: top;
+            transition: transform 0.8s ease-in-out, z-index 0.2s;
+            z-index: 20;
         }
 
         .wax-seal {
-            width: 40px;
-            height: 40px;
-            background: var(--gold-color);
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle at 30% 30%, #f7d78c, #c9962f);
+            border: 1px solid #c9962f;
             border-radius: 50%;
             position: absolute;
-            top: 90px;
-            left: 130px;
-            z-index: 6;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            top: 85px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 10px;
-            color: #5e4a06;
             font-weight: bold;
-            cursor: pointer;
-            transition: opacity 0.5s;
+            color: #754e08;
+            font-size: 1.2rem;
+            z-index: 100;
+            transition: all 0.5s ease;
+        }
+
+        .wax-seal::before {
+            content: '❤';
+            font-size: 1.4rem;
+        }
+
+        .envelope-wrapper.open .envelope-lid {
+            transform: rotateX(180deg);
+            z-index: 0;
+        }
+
+        .envelope-wrapper.open .card {
+            opacity: 1;
+            transform: translateY(-80px) scale(1);
+            transition-delay: 0.5s;
+            z-index: 5;
         }
 
         .envelope-wrapper.open .wax-seal {
             opacity: 0;
-            pointer-events: none;
+            transform: translateX(-50%) scale(0.5);
         }
 
-        /* Nội dung khác */
+        /* --- SCROLL ANIMATION --- */
+        .scroll-element {
+            opacity: 0;
+            transition: all 1s ease-out;
+        }
+
+        .scroll-up {
+            transform: translateY(50px);
+        }
+
+        .scroll-up.scroll-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-from-left {
+            transform: translateX(-60px);
+        }
+
+        .scroll-from-left.scroll-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scroll-from-right {
+            transform: translateX(60px);
+        }
+
+        .scroll-from-right.scroll-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* --- CONTENT STYLES --- */
         .content-block {
             padding: 30px 20px;
             text-align: center;
         }
 
         .section-title {
-            font-family: 'Dancing Script', cursive;
-            font-size: 30px;
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #222;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 40px;
+            background: #aaa;
+            margin: 10px auto 0;
+        }
+
+        .body-names-group {
+            margin: 20px 0 30px;
+        }
+
+        .body-name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            font-weight: normal;
             color: var(--primary-color);
-            margin-bottom: 20px;
+            line-height: 1.2;
+            margin: 5px 0;
         }
 
-        /* Ẩn nội dung bên dưới ban đầu để tập trung vào thiệp */
-        .hidden-content {
-            opacity: 0;
-            transition: opacity 1.5s;
+        .body-and {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.9rem;
+            font-style: italic;
+            color: #888;
+            margin: 5px 0;
+            display: block;
         }
 
-        .hidden-content.visible {
-            opacity: 1;
+        .family-section {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            padding: 0 10px;
         }
 
-        /* Calendar */
+        .family-box h4 {
+            color: #999;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .family-box p {
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            color: #444;
+        }
+
         .calendar-box {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            margin-bottom: 20px;
+            background: #fff;
+            padding: 25px;
+            border-radius: 4px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            margin: 20px 0;
+            border: 1px solid #eee;
         }
 
         .calendar-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 10px;
+            gap: 5px;
             font-size: 14px;
+            margin-top: 10px;
         }
 
         .calendar-day {
-            padding: 5px;
-            text-align: center;
+            width: 35px;
+            height: 35px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
         }
 
         .calendar-day.active {
             position: relative;
-            width: 34px;
-            height: 34px;
+            color: #d62828;
+            font-weight: bold;
+        }
+
+        .calendar-day.active::after {
+            content: '❤';
+            position: absolute;
+            top: -12px;
+            font-size: 24px;
+            opacity: 0.3;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 30px;
+            text-align: left;
+            padding-bottom: 30px;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .timeline-item:last-child {
+            border: none;
+        }
+
+        .t-time {
+            width: 70px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #222;
+            font-family: 'Playfair Display';
+            display: flex;
+            align-items: center;
+        }
+
+        .t-content {
+            flex: 1;
+            padding-left: 20px;
+            border-left: 2px solid #eee;
+        }
+
+        .map-preview img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            opacity: 0.8;
+            border-radius: 4px;
+        }
+
+        .map-link {
+            display: block;
+            background: #fff;
+            border: 1px solid #333;
+            color: #333;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 20px;
+            width: fit-content;
+            margin: 15px auto 0;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .map-link:hover {
+            background: #333;
+            color: #fff;
+        }
+
+        /* --- STYLES CHO ALBUM ẢNH CƯỚI (Mới thêm vào) --- */
+        .wedding-album-wrapper {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .main-stage {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 125%;
+            /* Tỷ lệ dọc */
+            overflow: hidden;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            background-color: #eee;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .main-stage img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity var(--album-transition) ease-in-out;
+        }
+
+        .main-stage img.active {
+            opacity: 1;
+        }
+
+        .album-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.4);
+            border: none;
+            color: #333;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            color: white;
+            z-index: 10;
         }
 
-        .calendar-day.active::before {
-            content: "";
+        .album-nav-btn:hover {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .prev-btn {
+            left: 10px;
+        }
+
+        .next-btn {
+            right: 10px;
+        }
+
+        .album-caption {
             position: absolute;
-            width: 34px;
-            height: 34px;
-            background: var(--primary-color, #ff4d6d);
-            clip-path: path("M17 30s-14-7.4-14-17.5S11 1 17 8.2C23 1 31 4.1 31 11.5S17 30 17 30z");
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 0;
-        }
-
-        /* chữ số ngày nằm trên trái tim */
-        .calendar-day.active span {
-            position: relative;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.95);
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
             z-index: 2;
+            font-size: 1rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
+            padding-bottom: 10px;
         }
 
-        /* Header Row */
-        .calendar-header div {
-            font-weight: bold;
-            margin-bottom: 10px;
+        .thumbnail-container {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            scrollbar-width: thin;
         }
 
+        .thumbnail-container::-webkit-scrollbar {
+            height: 4px;
+        }
 
-        /* Timeline */
-        .timeline-item {
+        .thumbnail-container::-webkit-scrollbar-thumb {
+            background-color: #ccc;
+            border-radius: 10px;
+        }
+
+        .thumb {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            flex-shrink: 0;
+            border: 2px solid transparent;
+        }
+
+        .thumb.active {
+            opacity: 1;
+            border-color: var(--primary-color);
+            /* Viền đỏ theo theme */
+            transform: scale(1.05);
+        }
+
+        /* --- GIFT BOX STYLE (Mới thêm) --- */
+        .gift-section {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+            padding: 0 20px;
+        }
+
+        .gift-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 8px;
             display: flex;
             align-items: center;
-            margin-bottom: 15px;
-            text-align: left;
-        }
-
-        .timeline-time {
-            font-weight: bold;
-            color: var(--primary-color);
-            width: 80px;
-            text-align: right;
-            margin-right: 15px;
-        }
-
-
-        /* Phần Header: Tên cha mẹ hai bên */
-        .header-names {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.75rem;
-            color: var(--text-dark);
-            text-transform: uppercase;
-            margin-bottom: 30px;
-            padding: 0 10px;
-        }
-
-        .side {
-            width: 45%;
-        }
-
-        .side h3 {
-            font-size: 0.7rem;
-            color: var(--text-grey);
-            font-weight: 400;
-            margin-bottom: 5px;
-        }
-
-        .side p {
-            font-weight: 700;
-            line-height: 1.4;
-            letter-spacing: 0.5px;
-        }
-
-        /* Phần Save The Date & Ngày tháng */
-        .std-text {
-            font-family: 'Great Vibes', cursive;
-            font-size: 2.5rem;
-            color: #888;
-            /* Màu xám nhạt như chữ viết tay */
-            transform: rotate(-5deg);
-            margin-bottom: 10px;
-        }
-
-        .main-date {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            color: #7a1d1d;
-            /* Màu đỏ trầm cho số */
-            margin-bottom: 20px;
+            width: 100%;
+            max-width: 320px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
             position: relative;
-            display: inline-block;
+            overflow: hidden;
         }
 
-        .main-date span {
-            font-size: 2rem;
-            /* Dấu gạch chéo nhỏ hơn */
-            vertical-align: middle;
+        .gift-card:active {
+            transform: scale(0.98);
         }
 
-         @media (min-width: 480px) {
-            .names {
-                font-size: 36px;
+        .gift-card:hover {
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Phần ảnh bên trái */
+        .gift-thumb {
+            width: 100px;
+            height: 100px;
+            flex-shrink: 0;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-right: 15px;
+            background: #eee;
+        }
+
+        .gift-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Filter nhẹ để ảnh trông vintage giống mẫu */
+            filter: sepia(20%) contrast(90%);
+        }
+
+        /* Phần chữ bên phải */
+        .gift-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .gift-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .gift-icon {
+            font-size: 1.8rem;
+            color: #555;
+            margin-top: 5px;
+        }
+
+        /* Hiệu ứng vẽ tay cho icon bao thư */
+        .gift-icon i {
+            transform: rotate(-5deg);
+            opacity: 0.8;
+        }
+
+        /* --- MODAL (POPUP NGÂN HÀNG) --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            display: none;
+            /* Mặc định ẩn */
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .bank-info-box {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .bank-qr {
+            width: 200px;
+            height: 200px;
+            margin: 15px auto;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px dashed #ccc;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
             }
 
-            .text-nowrap {
-                font-size: 14px;
+            to {
+                opacity: 1;
             }
+        }
+
+        /* Nút tải ảnh QR */
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            /* Khoảng cách giữa icon và chữ */
+            margin-top: 15px;
+            padding: 8px 25px;
+            background-color: var(--primary-color);
+            /* Màu đỏ chủ đạo */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+            border: 1px solid transparent;
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            background-color: #fff;
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 10px rgba(142, 14, 14, 0.2);
+        }
+
+        .download-btn:active {
+            transform: scale(0.95);
         }
     </style>
 </head>
@@ -447,189 +814,342 @@
     <div class="container">
         <div class="header">
             <p class="save-the-date">Save The Date</p>
-            <h1 class="names">Quốc Phong & Diễm Quỳnh</h1>
+            <div class="names-container">
+                <span class="name-part left">Quốc Phong</span>
+                <span class="name-part symbol">&</span>
+                <span class="name-part right">Diễm Quỳnh</span>
+            </div>
             <div class="date-highlight">20 . 12 . 2025</div>
         </div>
 
-        <div class="content-block">
-            <div class="envelope-section" onclick="openEnvelope()">
-                <div class="envelope-wrapper" id="envelope">
-                    <div class="envelope">
-                        <div class="envelope-bottom"></div>
-                    </div>
-                    <div class="card">
-                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
-                            alt="Wedding Photo">
-                    </div>
-                    <div class="envelope-lid"></div>
-                    <div class="wax-seal"></div>
+        <div class="envelope-section">
+            <div class="envelope-wrapper" id="envelope">
+                <div class="envelope-back"></div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                        alt="Wedding">
                 </div>
+                <div class="pocket-left"></div>
+                <div class="pocket-right"></div>
+                <div class="pocket-bottom"></div>
+                <div class="envelope-lid"></div>
+                <div class="wax-seal"></div>
             </div>
         </div>
 
-        <div class="hidden-content" id="mainContent">
+        <div id="mainContent" style="display:none;">
+
             <div class="content-block">
-                <h4 class="text-nowrap">TRÂN TRỌNG KÍNH MỜI</h4>
-                <h2 class="section-title" style="margin-top: 20px;">Bạn Lâm và Người Thương</h2>
-                <h4 class="text-nowrap">THAM DỰ LỄ THÀNH HÔN CỦA GIA ĐÌNH CHÚNG TÔI:</h4>
-                <h2 class="section-title" style="margin-top: 20px;">Vũ Quốc Phong</h2>
-                <h2 class="section-title" style="color: black;">and</h2>
-                <h2 class="section-title">Bùi Diễm Quỳnh</h2>
+                <div class="scroll-element scroll-up">
+                    <p style="font-size: 0.9rem; color: #888; margin-bottom: 5px; text-transform: uppercase;">Trân trọng
+                        kính mời</p>
+                    <h3 style="font-size: 1.6rem; font-family: 'Dancing Script'; margin-bottom: 10px;">Quý Khách</h3>
+                    <p style="color: #555; line-height: 1.6;">Tham dự lễ thành hôn của gia đình chúng tôi</p>
+                </div>
+
+                <div class="body-names-group">
+                    <h2 class="body-name scroll-element scroll-from-left">Vũ Quốc Phong</h2>
+                    <span class="body-and scroll-element scroll-up">và</span>
+                    <h2 class="body-name scroll-element scroll-from-right">Bùi Diễm Quỳnh</h2>
+                </div>
+
+                <hr style="width: 50%; margin: 20px auto 0; border: 0; border-top: 1px solid #f4ce7b;">
             </div>
 
-            <div class="content-block">
-                <div class="header-names">
-                    <div class="side">
-                        <h3>Nhà Trai</h3>
-                        <p>Ông CẤN VĂN AN</p>
-                        <p>Bà NGUYỄN THỊ HẢI</p>
-                    </div>
-                    <div class="side">
-                        <h3>Nhà Gái</h3>
-                        <p>Ông CẤN VĂN AN</p>
-                        <p>Bà NGUYỄN THỊ HẢI</p>
-                    </div>
-                </div>
-
-                <div class="section-title">Save The Date</div>
-
-                <div class="main-date">
-                    20 <span>/</span> 12
-                </div>
-
-                <!-- <div class="envelope-wrapper" id="envelope">
-                    <div class="envelope-back"></div>
-
-                    <div class="photos">
-                        <div class="photo-item photo-1">
-                            <img src="https://images.unsplash.com/photo-1520854221256-17451cc330e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
-                                alt="Bride">
-                        </div>
-                        <div class="photo-item photo-2">
-                            <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
-                                alt="Groom">
-                        </div>
+            <div class="content-block" style="padding-top: 0;">
+                <div class="family-section">
+                    <div class="family-box scroll-element scroll-from-left">
+                        <h4>Nhà Trai</h4>
+                        <p>Ông: Vũ Hồng Sơn</p>
+                        <p>Bà: Nguyễn Thị Hải</p>
                     </div>
 
-                    <div class="envelope-body"></div>
-                    <div class="envelope-front"></div>
-                    <div class="wax-seal"></div>
-                </div> -->
-
-                <div class="footer-card">
-                    <h2>TIỆC MỪNG LỄ THÀNH HÔN</h2>
-                    <p class="time-info">Thứ 4 - 18:00</p>
+                    <div class="family-box scroll-element scroll-from-right">
+                        <h4>Nhà Gái</h4>
+                        <p>Ông: Bùi Văn Ba</p>
+                        <p>Bà: Lê Thị Tư</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="content-block" style="background: #f9f9f9;">
-                <h2 class="section-title" id="month-title"></h2>
-
+            <div class="content-block scroll-element scroll-up" style="background: #fafafa;">
+                <h2 class="section-title">Tháng 12 - 2025</h2>
                 <div class="calendar-box">
-                    <div class="calendar-grid calendar-header">
+                    <div class="calendar-grid" style="font-weight: bold; color: #333; margin-bottom: 15px;">
                         <div>T2</div>
                         <div>T3</div>
                         <div>T4</div>
                         <div>T5</div>
                         <div>T6</div>
                         <div>T7</div>
-                        <div style="color:red">CN</div>
+                        <div style="color:#d62828">CN</div>
                     </div>
-
                     <div class="calendar-grid" id="calendar-days"></div>
                 </div>
-
-                <p id="selected-date"></p>
-                <p style="margin-top: 20px;">ĐỊA ĐIỂM TỔ CHỨC</p>
-                <p style="margin-top: 20px;">NHÀ VĂN HOÁ THÔN PHÚ NHIÊU</p>
+                <h3 style="font-family: 'Playfair Display'; margin-top: 20px;">Thứ 7 . 20 . 12 . 2025</h3>
+                <p style="color: #777; margin-top: 5px;">Vào lúc 17:00 PM</p>
             </div>
 
-            <div class="content-block">
+            <div class="content-block scroll-element scroll-up">
+                <h2 class="section-title">Địa Điểm</h2>
+                <p style="font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">
+                    Nhà Văn Hoá Phú Nhiêu
+                </p>
+                <p style="color: #666; font-size: 0.9rem; margin-top: 5px; margin-bottom: 20px;">Xã Phú Xuyên, TP. Hà
+                    Nội
+                </p>
+                <div class="map-preview">
+                    <img src="https://media.wired.com/photos/59269cd37034dc5f91bec0f1/master/pass/GoogleMapTA.jpg"
+                        alt="Map">
+                </div>
+                <a href="https://maps.app.goo.gl/fXkS9XYLuTd2WV3o8" target="_blank" class="map-link">Xem chỉ đường</a>
+            </div>
+
+            <div class="content-block scroll-element scroll-up" style="background: #fafafa;">
                 <h2 class="section-title">Timeline</h2>
-                <p>17:30 - Đón khách</p>
-                <p>18:30 - Nhập tiệc</p>
+                <div style="max-width: 300px; margin: 0 auto;">
+                    <div class="timeline-item">
+                        <div class="t-time">17:30</div>
+                        <div class="t-content">
+                            <h4>Đón Khách</h4>
+                            <p>Chụp hình check-in</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="t-time">19:00</div>
+                        <div class="t-content">
+                            <h4>Khai Tiệc</h4>
+                            <p>Làm lễ và dùng tiệc</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="t-time">20:30</div>
+                        <div class="t-content">
+                            <h4>Party</h4>
+                            <p>Giao lưu âm nhạc</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-block scroll-element scroll-up">
+                <div class="gift-section">
+                    <div class="gift-card" onclick="toggleModal(true)">
+                        <div class="gift-thumb">
+                            <img src="./assets/qr.png" alt="Couple">
+                        </div>
+
+                        <div class="gift-content">
+                            <span class="gift-title">Gửi Mừng Cưới</span>
+                            <div class="gift-icon">
+                                <i class="fa-regular fa-envelope"></i>
+                                <i class="fa-regular fa-heart"
+                                    style="font-size: 0.8rem; margin-left:-10px; color:var(--primary-color)"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-overlay" id="bankModal">
+                <div class="bank-info-box">
+                    <span class="close-modal" onclick="toggleModal(false)">&times;</span>
+                    <h3 class="section-title" style="font-size:1.5rem">Hộp Mừng Cưới</h3>
+                    <p style="margin-top:10px; color:#666">Cảm ơn tình cảm của bạn!</p>
+
+                    <div class="bank-qr">
+                        <img src="./assets/qr.png" alt="QR Code" style="width:100%; height:100%; object-fit:contain;">
+                    </div>
+
+                    <a href="./assets/qr.png" download="QR_Mung_Cuoi_Phong_Quynh" class="download-btn">
+                        <i class="fa-solid fa-download"></i> Tải Mã QR
+                    </a>
+
+                    <p style="font-weight:bold; color:var(--primary-color)">Ngân hàng TPBANK</p>
+                    <p>STK: 5221 812 1999</p>
+                    <p>Chủ TK: VU QUOC PHONG</p>
+                </div>
+            </div>
+
+            <div class="content-block scroll-element scroll-up">
+                <h2 class="section-title">Album Ảnh Cưới</h2>
+                <p style="font-style: italic; color: #888; margin-bottom: 15px; font-size: 0.9rem;">Những khoảnh khắc
+                    đẹp nhất</p>
+
+                <div class="wedding-album-wrapper">
+                    <div class="main-stage">
+                        <img src="" alt="Wedding Photo" id="current-image" class="active">
+                        <div class="album-caption" id="image-caption"></div>
+
+                        <button class="album-nav-btn prev-btn" onclick="changeImage(-1)">&#10094;</button>
+                        <button class="album-nav-btn next-btn" onclick="changeImage(1)">&#10095;</button>
+                    </div>
+
+                    <div class="thumbnail-container" id="thumbnail-list">
+                    </div>
+                </div>
+            </div>
+            <div class="content-block">
+
+                <div class="names-container">
+                    <span class="name-part scroll-element scroll-from-left">Quốc Phong</span>
+
+                    <span class="name-part symbol scroll-element scroll-up">&</span>
+
+                    <span class="name-part scroll-element scroll-from-right">Diễm Quỳnh</span>
+                </div>
+
+                <div class="date-highlight" style="margin-top: 20px; margin-bottom: 20px;">20 . 12 . 2025</div>
+
+                <p class="scroll-element scroll-up" style="font-family: 'Dancing Script'; font-size: 1.6rem;">
+                    Rất Hân Hạnh Được Đón Tiếp!
+                </p>
+
             </div>
         </div>
-
     </div>
 
     <script>
-        // Hàm mở phong bì
-        function openEnvelope() {
+        /* --- JS CHO PHẦN CHÍNH --- */
+        function autoOpenEnvelope() {
             const envelope = document.getElementById('envelope');
             const mainContent = document.getElementById('mainContent');
-
-            if (!envelope.classList.contains('open')) {
-                envelope.classList.add('open');
-
-                // Sau khi thiệp mở, hiện nội dung bên dưới
-                setTimeout(() => {
-                    mainContent.classList.add('visible');
-                }, 1000);
-            }
-        }
-
-        function getFullThu(year, month, day) {
-            const w = new Date(year, month - 1, day).getDay();
-            return [
-                "Chủ Nhật",
-                "Thứ 2",
-                "Thứ 3",
-                "Thứ 4",
-                "Thứ 5",
-                "Thứ 6",
-                "Thứ 7"
-            ][w];
-        }
-
-        function generateCalendar(year, month, activeDay = null) {
-            const monthTitle = document.getElementById("month-title");
-            const daysContainer = document.getElementById("calendar-days");
-            const selectedDate = document.getElementById("selected-date");
-
-            daysContainer.innerHTML = "";
-
-            const date = new Date(year, month - 1, 1);
-            const firstDay = (date.getDay() + 6) % 7;
-            const daysInMonth = new Date(year, month, 0).getDate();
-
-            monthTitle.textContent = `Tháng ${month} / ${year}`;
-
-            for (let i = 0; i < firstDay; i++) {
-                daysContainer.appendChild(document.createElement("div"));
-            }
-
-            for (let day = 1; day <= daysInMonth; day++) {
-                const div = document.createElement("div");
-                div.classList.add("calendar-day");
-                div.innerHTML = `<span>${day}</span>`;
-
-                if (activeDay && day === activeDay) {
-                    div.classList.add("active");
-
-                    const thuFull = getFullThu(year, month, day);
-                    selectedDate.innerHTML = `<b>${thuFull}, ngày ${day} tháng ${month} năm ${year}</b>`;
-                }
-
-                daysContainer.appendChild(div);
-            }
-        }
-
-        // Tự động chạy kịch bản (Scenario) khi trang web tải xong
-        window.onload = function () {
-
-            generateCalendar(2025, 12, 20);
-
-            // Các animation CSS (chữ bay, phong bì nổi) đã tự chạy bằng keyframes.
-
-            // Đặt thời gian tự mở phong bì
-            // 1.5s (chờ phong bì nổi lên) + 0.5s (nghỉ 1 chút) = 2.0s
+            envelope.classList.add('open');
             setTimeout(() => {
-                openEnvelope();
-            }, 2500); // 2500ms = 2.5 giây sau khi load trang
+                mainContent.style.display = 'block';
+                initScrollObserver();
+                // Khởi tạo Album khi nội dung hiện ra
+                initAlbum();
+            }, 1500);
+        }
+
+        function createCalendar(year, month, highlightDay) {
+            const container = document.getElementById('calendar-days');
+            const date = new Date(year, month - 1, 1);
+            const daysInMonth = new Date(year, month, 0).getDate();
+            let startDay = date.getDay();
+            if (startDay === 0) startDay = 7;
+            for (let i = 1; i < startDay; i++) { container.appendChild(document.createElement('div')); }
+            for (let i = 1; i <= daysInMonth; i++) {
+                const dayDiv = document.createElement('div');
+                dayDiv.classList.add('calendar-day');
+                dayDiv.innerText = i;
+                if (i === highlightDay) dayDiv.classList.add('active');
+                container.appendChild(dayDiv);
+            }
+        }
+
+        function initScrollObserver() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('scroll-visible');
+                    }
+                });
+            }, { threshold: 0.15 });
+            document.querySelectorAll('.scroll-element').forEach((el) => { observer.observe(el); });
+        }
+
+        /* --- JS CHO PHẦN ALBUM ẢNH --- */
+        // Danh sách ảnh mẫu (Bạn hãy thay link ảnh của bạn vào đây)
+        const albumPhotos = [
+            {
+                url: 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600&auto=format&fit=crop',
+                caption: "Ngày hạnh phúc"
+            },
+            {
+                url: 'https://images.unsplash.com/photo-1511285560982-1351cdeb9821?q=80&w=600&auto=format&fit=crop',
+                caption: "Cùng nhau bước đi"
+            },
+            {
+                url: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=600&auto=format&fit=crop',
+                caption: "Khoảnh khắc bình yên"
+            },
+            {
+                url: 'https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=600&auto=format&fit=crop',
+                caption: "Hẹn ước trọn đời"
+            }
+        ];
+
+        let currentAlbumIndex = 0;
+        const mainImage = document.getElementById('current-image');
+        const captionText = document.getElementById('image-caption');
+        const thumbContainer = document.getElementById('thumbnail-list');
+
+        function initAlbum() {
+            // Hiển thị ảnh đầu tiên
+            updateMainImage();
+
+            // Tạo thumbnails
+            // Xóa nội dung cũ để tránh trùng lặp nếu chạy lại
+            thumbContainer.innerHTML = '';
+
+            albumPhotos.forEach((photo, index) => {
+                const img = document.createElement('img');
+                img.src = photo.url;
+                img.classList.add('thumb');
+                if (index === 0) img.classList.add('active');
+
+                img.addEventListener('click', () => {
+                    currentAlbumIndex = index;
+                    updateMainImage();
+                });
+
+                thumbContainer.appendChild(img);
+            });
+        }
+
+        function updateMainImage() {
+            mainImage.style.opacity = 0;
+            setTimeout(() => {
+                mainImage.src = albumPhotos[currentAlbumIndex].url;
+                captionText.innerText = albumPhotos[currentAlbumIndex].caption;
+                mainImage.style.opacity = 1;
+            }, 200);
+
+            const allThumbs = document.querySelectorAll('.thumb');
+            allThumbs.forEach((thumb, index) => {
+                if (index === currentAlbumIndex) {
+                    thumb.classList.add('active');
+                    thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                } else {
+                    thumb.classList.remove('active');
+                }
+            });
+        }
+
+        function changeImage(direction) {
+            currentAlbumIndex += direction;
+            if (currentAlbumIndex >= albumPhotos.length) {
+                currentAlbumIndex = 0;
+            } else if (currentAlbumIndex < 0) {
+                currentAlbumIndex = albumPhotos.length - 1;
+            }
+            updateMainImage();
+        }
+
+        /* --- JS CHO CARD MỪNG CƯỚI --- */
+        function toggleModal(show) {
+            const modal = document.getElementById('bankModal');
+            if (show) {
+                modal.classList.add('active');
+            } else {
+                modal.classList.remove('active');
+            }
+        }
+
+        // Đóng modal khi bấm ra ngoài vùng trắng
+        document.getElementById('bankModal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                toggleModal(false);
+            }
+        });
+
+        /* --- KHỞI CHẠY --- */
+        window.onload = function () {
+            createCalendar(2025, 12, 20);
+            setTimeout(autoOpenEnvelope, 1500);
         };
-
-
     </script>
 </body>
 
