@@ -4,21 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thiệp Cưới: Quốc Phong & Diễm Quỳnh</title>
+    <title>Thiệp Cưới: Tiến Triển & Thuỳ Linh</title>
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://lamltf.github.io/wedding-invitation/">
-    <meta property="og:title" content="Thiệp cưới — Quốc Phong & Diễm Quỳnh">
+    <meta property="og:url" content="./">
+    <meta property="og:title" content="Thiệp cưới — Tiến Triển & Thuỳ Linh">
     <meta property="og:description" content="Trân trọng kính mời quý khách đến dự lễ thành hôn của chúng tôi.">
-    <meta property="og:site_name" content="Thiệp cưới Quốc Phong & Diễm Quỳnh">
+    <meta property="og:site_name" content="Thiệp cưới Tiến Triển & Thuỳ Linh">
 
-    <meta property="og:image" content="https://lamltf.github.io/wedding-invitation/thumb.png">
-    <meta property="og:image:secure_url" content="https://lamltf.github.io/wedding-invitation/thumb.png">
-    <meta property="og:image:alt" content="Ảnh cưới Quốc Phong & Diễm Quỳnh">
+    <meta property="og:image" content="./thumb.png">
+    <meta property="og:image:secure_url" content="./thumb.png">
+    <meta property="og:image:alt" content="Ảnh cưới Tiến Triển & Thuỳ Linh">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Thiệp cưới — Quốc Phong & Diễm Quỳnh">
+    <meta name="twitter:title" content="Thiệp cưới — Tiến Triển & Thuỳ Linh">
     <meta name="twitter:description" content="Trân trọng kính mời quý khách đến dự lễ thành hôn của chúng tôi.">
-    <meta name="twitter:image" content="https://lamltf.github.io/wedding-invitation/thumb.png">
+    <meta name="twitter:image" content="./thumb.png">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link
@@ -29,7 +29,7 @@
         :root {
             --primary-color: #8E0E0E;
             --gold-color: #C5A059;
-            --bg-color: #fcfcfc;
+            --bg-color: #ffffff;
             --text-color: #333;
             --album-transition: 0.4s;
         }
@@ -42,7 +42,7 @@
 
         body {
             font-family: 'Quicksand', sans-serif;
-            background-color: #222;
+            background-color: #f7f7f7;
             display: flex;
             justify-content: center;
             min-height: 100vh;
@@ -52,11 +52,10 @@
         .container {
             width: 100%;
             max-width: 430px;
-            background-color: var(--bg-color);
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+            background-color: #ffffff;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
             overflow-x: hidden;
             position: relative;
-            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
             padding-bottom: 50px;
         }
 
@@ -112,7 +111,6 @@
         /* --- HEADER --- */
         .header {
             text-align: center;
-            padding-top: 50px;
             position: relative;
             z-index: 100;
         }
@@ -128,22 +126,25 @@
         }
 
         .names-container {
+            font-family: 'Cormorant Garamond', serif;
             display: flex;
+            flex-direction: row;
             justify-content: center;
             align-items: center;
-            gap: 8px;
-            margin-bottom: 10px;
+            gap: 10px;
+            margin: 0;
             width: 100%;
             white-space: nowrap;
-            flex-wrap: nowrap;
         }
 
         .name-part {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
             color: var(--primary-color);
-            line-height: 1.2;
-            font-size: clamp(1rem, 5vw, 1.5rem);
+            line-height: 1.15;
+            font-size: clamp(1.2rem, 6vw, 1.7rem);
+            letter-spacing: 2px;
+            text-align: center;
         }
 
         .name-part.left {
@@ -152,10 +153,10 @@
         }
 
         .name-part.symbol {
-            font-size: clamp(1rem, 4vw, 1.8rem);
-            font-weight: 400;
+            font-size: clamp(1rem, 5vw, 1.4rem);
+            font-weight: 300;
             font-style: italic;
-            color: #999;
+            color: var(--gold-color);
             opacity: 0;
             animation: zoomIn 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s forwards;
         }
@@ -170,247 +171,46 @@
             font-size: 1rem;
             letter-spacing: 2px;
             color: #666;
-            margin-top: 5px;
-            border-top: 1px solid #ddd;
-            border-bottom: 1px solid #ddd;
-            display: inline-block;
-            padding: 6px 30px;
+            display: block;
+            padding: 6px;
             opacity: 0;
             animation: fadeInUp 1s ease-out 0.8s forwards;
         }
 
-        /* --- PHONG BÌ CHÍNH (Top) --- */
-        .envelope-section {
-            height: 350px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 160px;
-            perspective: 1000px;
-            opacity: 0;
-            animation: fadeInUp 1.2s ease-out 1.2s forwards;
-        }
-
-        .envelope-wrapper {
-            position: relative;
-            width: 300px;
-            height: 200px;
-            transition: transform 0.5s;
-        }
-
-        .card {
-            position: absolute;
-            bottom: 0;
-            left: 25px;
-            width: 250px;
-            height: 300px;
-            background: #fff;
+        .date-highlight-2 {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            color: #666;
+            display: inline-block;
             padding: 6px;
-            z-index: 5;
             opacity: 0;
-            transform: translateY(50px) scale(0.95);
-            transition: transform 1.5s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.8s;
-            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease-out 0.8s forwards;
+            margin-top: 30px;
+            margin-bottom: 30px;
         }
 
-        .card img {
+        /* --- ẢNH CHÍNH (MAIN PHOTO) --- */
+        .envelope-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 24px auto 24px auto;
+            padding: 0 20px;
+            opacity: 0;
+            animation: fadeInUp 1.2s ease-out 1s forwards;
+        }
+
+        .envelope-section img {
             width: 100%;
-            height: 100%;
+            max-width: 300px;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
             object-fit: cover;
-            filter: sepia(10%);
-            object-position: top center;
+            object-position: center top;
         }
-
-
-        /* --- PHONG BÌ HYBRID: NẮP TRÒN - TÚI THẲNG (Gọn gàng nhất) --- */
-
-        /* --- PHONG BÌ SOFT (BO TRÒN NHẸ) --- */
-
-        /* 1. Mặt lưng: Bo 4 góc 10px cho mềm */
-        .envelope-back {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #4a0404;
-            border-radius: 0 0 10px 10px;
-            /* <--- Bo góc ở đây */
-            z-index: 1;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-        }
-
-        /* 2. Cánh bên Trái */
-        .pocket-left {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-
-            /* Bo 2 góc bên trái khớp với mặt lưng */
-            border-top-left-radius: 10px;
-            border-bottom-left-radius: 10px;
-
-            /* Cắt hình tam giác */
-            clip-path: polygon(0 0, 0 100%, 55% 53%);
-
-            background: linear-gradient(135deg, #8E0E0E 0%, #a31010 100%);
-            background-image: url('https://www.transparenttextures.com/patterns/felt.png'), linear-gradient(135deg, #8E0E0E 0%, #a31010 100%);
-            background-blend-mode: multiply;
-
-            z-index: 10;
-            pointer-events: none;
-            filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
-        }
-
-        /* 3. Cánh bên Phải */
-        .pocket-right {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-
-            /* Bo 2 góc bên phải khớp với mặt lưng */
-            border-top-right-radius: 10px;
-            border-bottom-right-radius: 10px;
-
-            /* Cắt hình tam giác */
-            clip-path: polygon(100% 0, 100% 100%, 45% 53%);
-
-            background: linear-gradient(225deg, #750808 0%, #8E0E0E 100%);
-            background-image: url('https://www.transparenttextures.com/patterns/felt.png'), linear-gradient(225deg, #750808 0%, #8E0E0E 100%);
-            background-blend-mode: multiply;
-
-            z-index: 11;
-            pointer-events: none;
-            filter: drop-shadow(-2px 4px 6px rgba(0, 0, 0, 0.2));
-        }
-
-        /* 4. Đáy phong bì */
-        .pocket-bottom {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-
-            /* Bo 2 góc dưới đáy khớp với mặt lưng */
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
-
-            /* Đỉnh nhọn cao lên vị trí 40% */
-            clip-path: polygon(0 100%, 100% 100%, 50% 40%);
-
-            background: linear-gradient(to top, #5a0505 0%, #8E0E0E 100%);
-            background-image: url('https://www.transparenttextures.com/patterns/felt.png'), linear-gradient(to top, #5a0505 0%, #8E0E0E 100%);
-            background-blend-mode: multiply;
-
-            z-index: 12;
-            pointer-events: none;
-            filter: drop-shadow(0 -4px 6px rgba(0, 0, 0, 0.3));
-        }
-
-        /* 5. Nắp phong bì (LÀM CONG NHẸ CHO MỀM) */
-        .envelope-lid {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-
-            /* Thay vì cắt nhọn hoắt, ta dùng border-radius để nắp cong hình bán nguyệt */
-            /* Bỏ clip-path cũ đi để dùng border-radius */
-            clip-path: none;
-            height: 43%;
-            /* Giảm chiều cao xuống để nắp vừa vặn */
-            border-bottom-left-radius: 50% 100%;
-            /* Tạo độ cong mềm */
-            border-bottom-right-radius: 50% 100%;
-
-            background: linear-gradient(180deg, #d62828 0%, #a31010 100%);
-            background-image: url('https://www.transparenttextures.com/patterns/felt.png'), linear-gradient(180deg, #d62828 0%, #a31010 100%);
-            background-blend-mode: multiply;
-
-            transform-origin: top;
-            transition: transform 0.8s ease-in-out, z-index 0.2s;
-            z-index: 20;
-
-            filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.3));
-        }
-
-        /* --- CHỈNH SỬA VỊ TRÍ CON DẤU --- */
-        .wax-seal {
-            width: 50px;
-            height: 50px;
-            background: radial-gradient(circle at 30% 30%, #f7d78c, #c9962f);
-            border: 1px solid #b8860b;
-            border-radius: 50%;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            /* --- VỊ TRÍ MỚI: XUỐNG DƯỚI & GIỮA TẤM ĐÁY --- */
-            position: absolute;
-            top: 65%;
-            /* Đẩy xuống sâu hơn (khoảng 2/3 phong bì) */
-            left: 50%;
-            transform: translate(-50%, -50%);
-
-            z-index: 30;
-            /* Nằm trên cùng */
-            transition: all 0.5s ease;
-        }
-
-        /* Giữ nguyên phần icon bên trong */
-        .wax-seal::before {
-            /* Mã ký tự chữ Song Hỷ */
-            content: '囍';
-
-            /* Dùng font có chân (Serif) để nét chữ dày dặn, giống như khắc triện */
-            font-family: 'Playfair Display', serif;
-
-            /* Tăng kích thước lớn một chút cho đầy đặn con dấu */
-            font-size: 2rem;
-
-            /* Màu nâu đậm để tạo hiệu ứng khắc chìm */
-            color: #754e08;
-
-            /* Căn giữa */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-
-            /* Chỉnh vị trí tí xíu nếu cần */
-            padding-bottom: 2px;
-            opacity: 0.9;
-        }
-
-        .envelope-wrapper.open .envelope-lid {
-            transform: rotateX(180deg);
-            z-index: 0;
-        }
-
-        .envelope-wrapper.open .card {
-            opacity: 1;
-            transform: translateY(-80px) scale(1);
-            transition-delay: 0.5s;
-            z-index: 5;
-        }
-
-        /* .envelope-wrapper.open .wax-seal {
-            opacity: 0;
-            transform: translateX(-50%) scale(0.5);
-        } */
 
         /* --- SCROLL ANIMATION --- */
         .scroll-element {
@@ -1054,38 +854,599 @@
         .gallery-item.tall {
             grid-row: span 2;
         }
+
+        /* --- ĐOẠN CSS THIẾT KẾ NGÀY THÁNG TỐI GIẢN --- */
+        .date-display-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+            color: #666;
+            /* Màu xám đen nhạt */
+            margin-top: 15px;
+            /* Tạo khoảng cách với tên */
+        }
+
+        .date-top,
+        .date-bottom {
+            font-size: 0.75rem;
+            /* Kích thước chữ nhỏ */
+            font-weight: 300;
+            letter-spacing: 0.4em;
+            /* Khoảng cách chữ siêu rộng */
+            margin-right: -0.4em;
+            /* Sửa lỗi căn giữa do letter-spacing dư ở ký tự cuối */
+        }
+
+        .date-middle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
+            gap: 20px;
+            /* Khoảng cách giữa các cụm DEC, 20, 2025 */
+        }
+
+        .date-left,
+        .date-right {
+            font-size: 0.85rem;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            margin-right: -0.3em;
+        }
+
+        .date-center {
+            font-size: 3.5rem;
+            /* Kích thước to, nhấn mạnh */
+            font-weight: 100;
+            /* Nét cực mỏng */
+            line-height: 1;
+            /* Loại bỏ khoảng trắng thừa của font */
+            color: #333;
+            /* Màu đen đậm hơn một chút so với tháng/năm */
+        }
+
+        /* Đáp ứng màn hình điện thoại nhỏ */
+        @media (max-width: 360px) {
+            .date-middle {
+                gap: 15px;
+            }
+
+            .date-center {
+                font-size: 3rem;
+            }
+        }
+
+        /* --- ELEGANT COUNTDOWN & TIMELINE STYLES --- */
+        .elegant-section {
+            padding: 40px 10px;
+            text-align: center;
+            background: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .elegant-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            letter-spacing: 0.3em;
+            color: #222;
+            margin-bottom: 5px;
+            font-weight: normal;
+        }
+
+        .elegant-subtitle {
+            font-family: sans-serif;
+            font-size: 0.75rem;
+            color: #888;
+            letter-spacing: 0.2em;
+            margin-bottom: 30px;
+        }
+
+        /* Countdown */
+        .elegant-countdown {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .ecd-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 55px;
+        }
+
+        .ecd-num {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: #222;
+            line-height: 1;
+        }
+
+        .ecd-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.55rem;
+            color: #777;
+            letter-spacing: 0.15em;
+            margin-top: 10px;
+        }
+
+        .ecd-sep {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            color: #222;
+            margin-top: -15px;
+            /* Căn giữa dấu hai chấm với các con số */
+            font-weight: 300;
+        }
+
+        /* Timeline */
+        .elegant-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            /* Khoảng cách giữa các hàng ngang */
+            max-width: 320px;
+            margin: 0 auto;
+        }
+
+        .etl-row {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            /* Khoảng cách giữa 2 cột (Popcorn - Photobooth) */
+        }
+
+        .etl-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .etl-icon {
+            width: 35px;
+            height: 35px;
+            margin-bottom: 15px;
+            color: #333;
+            /* Màu line-art */
+        }
+
+        .etl-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .etl-text-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .etl-text-sub {
+            font-family: sans-serif;
+            font-size: 0.65rem;
+            color: #888;
+        }
+
+        .etl-text-time {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            color: #555;
+            margin-top: 5px;
+        }
+
+        /* --- STYLES CHO BỐ CỤC SO LE (ALTERNATING GRID) --- */
+        .alternating-section {
+            width: 100%;
+            background: #ffffff;
+            margin: 20px 0;
+        }
+
+        .alt-row {
+            display: flex;
+            width: 100%;
+            min-height: 280px;
+        }
+
+        /* Khi đảo ngược để tạo hình so le */
+        .alt-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        /* Khung chứa chữ và nút bấm (chiếm 50%) */
+        .alt-content-box {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 10px;
+            background-color: #ffffff;
+            text-align: center;
+        }
+
+        /* Khung chứa ảnh (chiếm 50%) */
+        .alt-image-box {
+            width: 50%;
+            position: relative;
+            overflow: hidden;
+            background-color: #f0f0f0;
+        }
+
+        .alt-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+            /* Giữ màu sắc gốc của ảnh, không dùng hiệu ứng trắng đen */
+        }
+
+        /* Tiêu đề */
+        .alt-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            letter-spacing: 0.25em;
+            color: #222;
+            font-weight: normal;
+            margin-bottom: 3px;
+        }
+
+        .alt-subtitle {
+            font-family: sans-serif;
+            font-size: 0.7rem;
+            color: #888;
+            letter-spacing: 0.15em;
+            margin-bottom: 25px;
+        }
+
+        /* Nút bấm điều hướng bản đồ */
+        .alt-btn-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .alt-btn-item:hover {
+            transform: scale(1.05);
+        }
+
+        .alt-icon-circle {
+            width: 55px;
+            height: 55px;
+            background-color: #222;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition: background-color 0.3s;
+        }
+
+        .alt-btn-item:hover .alt-icon-circle {
+            background-color: var(--primary-color);
+        }
+
+        .alt-btn-item span {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            color: #444;
+            font-weight: 600;
+        }
+
+        /* Phần liên hệ gọi điện */
+        .alt-contact-person {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .alt-person-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            color: #333;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .alt-call-btn {
+            width: 45px;
+            height: 45px;
+            background-color: #222;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .alt-call-btn:hover {
+            background-color: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        /* --- STYLES CHO THẺ THÔNG TIN BÀI HÁT TỐI GIẢN --- */
+        .music-widget-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 15px 20px;
+            max-width: 320px;
+            margin: 0 auto;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+            border: 1px solid #f0f0f0;
+            text-align: left;
+        }
+
+        .mw-top-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .mw-thumbnail {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: #eee;
+        }
+
+        .mw-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .mw-info {
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .mw-song-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #222;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .mw-artist {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.75rem;
+            color: #777;
+            margin-top: 3px;
+        }
+
+        .mw-wave-icon {
+            color: #ccc;
+            font-size: 0.85rem;
+            padding-right: 5px;
+        }
+
+        /* --- STYLES CHO THẺ BOARDING PASS COMPACT (~100PX) --- */
+        .bp-ticket-wrapper {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            padding: 0 10px;
+        }
+
+        .bp-ticket {
+            background-color: #ffffff;
+            color: #5a3d28;
+            width: 100%;
+            max-width: 420px;
+            height: 105px;
+            /* Giới hạn chiều cao chuẩn ~100px */
+            border-radius: 12px;
+            display: flex;
+            position: relative;
+            box-shadow: 0 8px 25px rgba(90, 61, 40, 0.1);
+            cursor: pointer;
+            transition: transform 0.25s ease;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+
+        .bp-ticket:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Dải màu trang trí dọc bên trái */
+        .bp-left-strip {
+            width: 22px;
+            background-color: #b89753;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bp-left-strip span {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            font-size: 0.45rem;
+            letter-spacing: 2px;
+            color: #ffffff;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        /* Phần nội dung chính bên trái */
+        .bp-main-section {
+            flex: 2.5;
+            padding: 10px 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .bp-top-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .bp-family-text {
+            font-size: 0.5rem;
+            letter-spacing: 1.5px;
+            color: #b89753;
+            font-weight: 600;
+        }
+
+        .bp-date-badge {
+            font-size: 0.55rem;
+            color: #8c7355;
+            font-weight: 600;
+        }
+
+        .bp-names {
+            font-size: 1.15rem;
+            color: #5a3d28;
+            font-weight: 700;
+            line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .bp-footer-info {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid #f5ede6;
+            padding-top: 4px;
+        }
+
+        .bp-col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bp-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.45rem;
+            color: #9c8365;
+            letter-spacing: 1px;
+        }
+
+        .bp-val {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.6rem;
+            color: #5a3d28;
+            font-weight: 600;
+        }
+
+        /* Đường rãnh xé vé nét đứt */
+        .bp-perforation {
+            width: 0;
+            border-left: 2px dashed #d1c2b4;
+            margin: 8px 0;
+            position: relative;
+        }
+
+        /* Cuống vé bên phải (QR Code) */
+        .bp-stub-section {
+            flex: 1;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #fcf9f6;
+        }
+
+        .bp-qr-box {
+            width: 62px;
+            height: 62px;
+            background: #fff;
+            padding: 3px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e6dbd0;
+        }
+
+        .bp-qr-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .bp-qr-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.45rem;
+            letter-spacing: 1.5px;
+            color: #8c7355;
+            margin-top: 4px;
+            font-weight: 600;
+        }
     </style>
 </head>
 
 <body>
 
     <div class="container">
-        <div class="header">
+        <div class="header" style="margin-top: 24px;">
             <p class="save-the-date">Save The Date</p>
-            <div class="names-container">
-                <span class="name-part left">Quốc Phong</span>
-                <span class="name-part symbol">&</span>
-                <span class="name-part right">Diễm Quỳnh</span>
-            </div>
-            <div class="date-highlight">20 . 12 . 2025</div>
         </div>
 
         <div class="envelope-section">
-            <div class="envelope-wrapper" id="envelope">
-                <div class="envelope-back"></div>
-                <div class="card">
-                    <img src="https://lamltf.github.io/wedding-invitation/assets/wd3.JPG" alt="Wedding">
+            <img src="./assets/main.jpg" alt="Wedding">
+        </div>
+        <div class="header">
+            <div class="names-container">
+                <span class="name-part left">TRIỂN</span>
+                <span class="name-part symbol">&</span>
+                <span class="name-part right">LINH</span>
+            </div>
+            <div class="date-highlight">24 . 10 . 2026</div>
+            <div class="date-highlight-2">
+                <div class="date-top">SATURDAY</div>
+                <div class="date-middle">
+                    <div class="date-left">OCT</div>
+                    <div class="date-center">24</div>
+                    <div class="date-right">2026</div>
                 </div>
-                <div class="pocket-left"></div>
-                <div class="pocket-right"></div>
-                <div class="pocket-bottom"></div>
-                <div class="envelope-lid"></div>
-                <div class="wax-seal"></div>
+                <div class="date-bottom">16:30PM</div>
             </div>
         </div>
 
-        <div id="mainContent" style="display:none;">
-
+        <!-- THẺ THÔNG TIN BÀI HÁT TỐI GIẢN -->
+        <div class="content-block scroll-element scroll-from-left">
+            <div class="music-widget-card">
+                <div class="mw-top-row">
+                    <div class="mw-thumbnail">
+                        <img src="./assets/wd1.JPG" alt="Mai Mai Ben Nhau Album">
+                    </div>
+                    <div class="mw-info">
+                        <div class="mw-song-title">Mãi Mãi Bên Nhau</div>
+                        <div class="mw-artist">Noo Phước Thịnh</div>
+                    </div>
+                    <div class="mw-wave-icon">
+                        <i class="fa-solid fa-music"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- KẾT THÚC THẺ THÔNG TIN BÀI HÁT -->
+        <div id="mainContent">
             <div class="content-block" style="padding-top: 0;">
                 <div class="scroll-element scroll-up">
                     <p style="font-size: 0.9rem; color: #888; margin-bottom: 5px; text-transform: uppercase;">Trân trọng
@@ -1096,9 +1457,9 @@
                 </div>
 
                 <div class="body-names-group">
-                    <h2 class="body-name scroll-element scroll-from-left">Vũ Quốc Phong</h2>
-                    <span class="body-and scroll-element scroll-up">và</span>
-                    <h2 class="body-name scroll-element scroll-from-right">Bùi Diễm Quỳnh</h2>
+                    <h2 class="body-name scroll-element scroll-from-left">Vũ Tiến Triển</h2>
+                    <span class="body-and scroll-element scroll-up">&</span>
+                    <h2 class="body-name scroll-element scroll-from-right">Trần Thị Thuỳ Linh</h2>
                 </div>
 
                 <hr style="width: 50%; margin: 20px auto 0; border: 0; border-top: 1px solid #f4ce7b;">
@@ -1108,19 +1469,33 @@
                 <div class="family-section">
                     <div class="family-box scroll-element scroll-from-left">
                         <h4>Nhà Trai</h4>
-                        <p>Ông: Vũ Hồng Sơn</p>
-                        <p>Bà: Lương Thị Lan Hương</p>
+                        <p>Ông: Vũ Khắc Uy</p>
+                        <p>Bà: Vũ Thị Thuý</p>
                     </div>
 
                     <div class="family-box scroll-element scroll-from-right">
                         <h4>Nhà Gái</h4>
-                        <p>Bà: Bùi Thị Hái</p>
+                        <p>Ông: Trần Văn Thu</p>
+                        <p>Bà: Trần Thị Hoài</p>
                     </div>
                 </div>
             </div>
 
+            <div class="envelope-section">
+                <img src="./assets/middle.jpg" alt="Wedding">
+            </div>
+
+            <div class="content-block" style="margin-top: 30px; margin-bottom: 30px;">
+                <div class="scroll-element scroll-up">
+                    <p style="color: #555; line-height: 1.6;">Khi mây mờ tan đi,
+                    </p>
+                    <p style="color: #555; line-height: 1.6;">Cả thế giới đều biết rằng anh yêu em.
+                    </p>
+                </div>
+            </div>
+
             <div class="content-block scroll-element scroll-up" style="background: #fafafa;">
-                <h2 class="section-title">Tháng 12 - 2025</h2>
+                <h2 class="section-title">Tháng 10 - 2026</h2>
                 <div class="calendar-box">
                     <div class="calendar-grid" style="font-weight: bold; color: #333; margin-bottom: 15px;">
                         <div>T2</div>
@@ -1133,11 +1508,9 @@
                     </div>
                     <div class="calendar-grid" id="calendar-days"></div>
                 </div>
-                <h3 style="font-family: 'Playfair Display'; margin-top: 20px;">Thứ 7 . 20 . 12 . 2025</h3>
-                <p style="color: #777; margin-top: 5px;">Vào lúc 16:30 PM</p>
             </div>
 
-            <div class="content-block scroll-element scroll-up">
+            <!-- <div class="content-block scroll-element scroll-up">
                 <h2 class="section-title">Địa Điểm</h2>
                 <h3 class="">Nhà Trai</p>
                     <p style="font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">
@@ -1162,59 +1535,195 @@
                         <p style="color: #666; font-size: 0.9rem; margin-top: 5px; margin-bottom: 20px;">Số 73 Đình
                             Thượng, Nội Thôn, Hồng Vân, TP Hài Nội
                         </p>
-                        <!-- <div class="map-preview">
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4425.3710785898875!2d105.88370627583626!3d20.762181396880127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135b7006d331c93%3A0xdfd55d6ae29c644c!2zU-G7sSBraeG7h24gSMOibiBo4bqxbmc!5e1!3m2!1sen!2s!4v1765596685653!5m2!1sen!2s"
-                                width="380" height="280" style="border:0;" allowfullscreen="" loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div> -->
-            </div>
+            </div> -->
 
-            <div class="content-block scroll-element scroll-up" style="background: #fafafa;">
-                <h2 class="section-title">Timeline</h2>
-                <div style="max-width: 300px; margin: 0 auto;">
-                    <div class="timeline-item">
-                        <div class="t-time">15:30</div>
-                        <div class="t-content">
-                            <h4>Đón Khách</h4>
-                            <p>Chụp hình check-in</p>
+            <div class="content-block scroll-element scroll-up">
+                <!-- ĐOẠN COUNTDOWN & TIMELINE MỚI -->
+                <div class="elegant-section scroll-element scroll-up">
+
+                    <!-- COUNTDOWN -->
+                    <h2 class="elegant-title">THỜI GIAN DIỄN RA</h2>
+
+                    <div class="elegant-countdown">
+                        <div class="ecd-item">
+                            <div class="ecd-num" id="ecd-days">00</div>
+                            <div class="ecd-label">NGÀY</div>
                         </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="t-time">16:30</div>
-                        <div class="t-content">
-                            <h4>Khai Tiệc</h4>
-                            <p>Làm lễ và dùng tiệc</p>
+                        <div class="ecd-sep">:</div>
+                        <div class="ecd-item">
+                            <div class="ecd-num" id="ecd-hours">00</div>
+                            <div class="ecd-label">GIỜ</div>
                         </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="t-time">20:00</div>
-                        <div class="t-content">
-                            <h4>Party</h4>
-                            <p>Giao lưu âm nhạc</p>
+                        <div class="ecd-sep">:</div>
+                        <div class="ecd-item">
+                            <div class="ecd-num" id="ecd-minutes">00</div>
+                            <div class="ecd-label">PHÚT</div>
+                        </div>
+                        <div class="ecd-sep">:</div>
+                        <div class="ecd-item">
+                            <div class="ecd-num" id="ecd-seconds">00</div>
+                            <div class="ecd-label">GIÂY</div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="content-block scroll-element scroll-up">
-                <div class="gift-section">
-                    <div class="gift-card" onclick="toggleModal(true)">
-                        <div class="gift-thumb">
-                            <img src="https://lamltf.github.io/wedding-invitation/assets/qr.png" alt="Couple">
-                        </div>
+            <div class="content-block scroll-element scroll-up" style="background: #fafafa;">
+                <!-- TIMELINE MỚI -->
+                <h2 class="elegant-title">T I M E L I N E</h2>
 
-                        <div class="gift-content">
-                            <span class="gift-title">Gửi Mừng Cưới</span>
-                            <div class="gift-icon">
-                                <i class="fa-regular fa-envelope"></i>
-                                <i class="fa-regular fa-heart"
-                                    style="font-size: 0.8rem; margin-left:-10px; color:var(--primary-color)"></i>
+                <div class="elegant-timeline">
+                    <!-- Hàng 1: Đón Khách (15:30) -->
+                    <div class="etl-row">
+                        <div class="etl-item">
+                            <div class="etl-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                                    <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </div>
+                            <div class="etl-text-title">ĐÓN KHÁCH<br><span class="etl-text-sub">Chụp hình
+                                    check-in</span></div>
+                            <div class="etl-text-time">3:30 PM</div>
+                        </div>
+                    </div>
+
+                    <!-- Hàng 2: Khai Tiệc (16:30) -->
+                    <div class="etl-row">
+                        <div class="etl-item">
+                            <div class="etl-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                                    <circle cx="12" cy="12" r="5" />
+                                    <circle cx="12" cy="12" r="3.5" />
+                                    <path d="M6 8v9M5 8c0-1 1-1.5 1-1.5v3H5" />
+                                    <path d="M18 8v9M18 8c0-1-.5-1.5-1.5-1.5v4" />
+                                </svg>
+                            </div>
+                            <div class="etl-text-title">KHAI TIỆC<br><span class="etl-text-sub">Làm lễ và dùng
+                                    tiệc</span></div>
+                            <div class="etl-text-time">4:30 PM</div>
+                        </div>
+                    </div>
+
+                    <!-- Hàng 3: Party (20:00) -->
+                    <div class="etl-row">
+                        <div class="etl-item">
+                            <div class="etl-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                                    <path d="M9 18V5l12-2v13"></path>
+                                    <circle cx="6" cy="18" r="3"></circle>
+                                    <circle cx="18" cy="16" r="3"></circle>
+                                </svg>
+                            </div>
+                            <div class="etl-text-title">PARTY<br><span class="etl-text-sub">Giao lưu âm nhạc</span>
+                            </div>
+                            <div class="etl-text-time">8:00 PM</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KHỐI LOCATION & CONTACT SO LE -->
+            <!-- KHỐI LOCATION & CONTACT SO LE (ĐÃ ĐỔI VỊ TRÍ) -->
+            <div class="alternating-section scroll-element scroll-up">
+
+                <!-- HÀNG 1 (TRƯỚC LÀ DƯỚI): TRÁI LÀ ẢNH 2 - PHẢI LÀ NÚT CONTACT -->
+                <div class="alt-row">
+                    <div class="alt-image-box">
+                        <img src="./assets/wd2.jpg" alt="Wedding Contact">
+                    </div>
+                    <div class="alt-content-box">
+                        <h2 class="alt-title">C O N T A C T</h2>
+                        <p class="alt-subtitle"></p>
+
+                        <div class="alt-contacts-group">
+                            <!-- Chú rể -->
+                            <div class="alt-contact-person">
+                                <span class="alt-person-name">VŨ TIẾN TRIỂN</span>
+                                <a href="tel:0123456789" class="alt-call-btn">
+                                    <i class="fa-solid fa-phone"></i>
+                                </a>
+                            </div>
+                            <!-- Cô dâu -->
+                            <div class="alt-contact-person" style="margin-top: 25px;">
+                                <span class="alt-person-name">TRẦN THỊ THÙY LINH</span>
+                                <a href="tel:0987654321" class="alt-call-btn">
+                                    <i class="fa-solid fa-phone"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- HÀNG 2 (TRƯỚC LÀ TRÊN): TRÁI LÀ NÚT LOCATION - PHẢI LÀ ẢNH 1 -->
+                <div class="alt-row reverse">
+                    <div class="alt-image-box">
+                        <img src="./assets/wd1.jpg" alt="Wedding Location">
+                    </div>
+                    <div class="alt-content-box">
+                        <h2 class="alt-title">L O C A T I O N</h2>
+                        <p class="alt-subtitle"></p>
+
+                        <div class="alt-buttons-group">
+                            <a href="https://maps.app.goo.gl/dfd55d6ae29c644c" target="_blank" class="alt-btn-item">
+                                <div class="alt-icon-circle">
+                                    <i class="fa-solid fa-map-location-dot"></i>
+                                </div>
+                                <span>GOOGLE MAPS</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+            <!-- KẾT THÚC KHỐI SO LE -->
+
+            <!-- THẺ VÉ MÁY BAY / BOARDING PASS COMPACT (CHIỀU CAO ~100PX) -->
+            <div class="content-block scroll-element scroll-up">
+                <div class="bp-ticket-wrapper">
+                    <div class="bp-ticket" onclick="toggleModal(true)">
+
+                        <!-- DẢI MÀU BÊN TRÁI -->
+                        <div class="bp-left-strip">
+                            <span>BOARDING PASS</span>
+                        </div>
+
+                        <!-- NỘI DUNG CHÍNH BÊN TRÁI -->
+                        <div class="bp-main-section">
+                            <div class="bp-top-line">
+                                <span class="bp-family-text">SAVE THE DATE</span>
+                                <span class="bp-date-badge">24 . 10 . 2026</span>
+                            </div>
+
+                            <div class="bp-names">Tiến Triển & Thuỳ Linh</div>
+
+                            <div class="bp-footer-info">
+                                <div class="bp-col">
+                                    <span class="bp-label">DESTINATION</span>
+                                    <span class="bp-val">HÀ NỘI, VIỆT NAM</span>
+                                </div>
+                                <div class="bp-col" style="text-align: right;">
+                                    <span class="bp-label">SEAT</span>
+                                    <span class="bp-val">24 / 10</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ĐƯỜNG RÃNH XÉ VÉ NÉT ĐỨT -->
+                        <div class="bp-perforation"></div>
+
+                        <!-- CUỐNG VÉ BÊN PHẢI (QR CODE) -->
+                        <div class="bp-stub-section">
+                            <div class="bp-qr-box">
+                                <img src="./assets/qr.png" alt="QR Mừng Cưới">
+                            </div>
+                            <span class="bp-qr-label">Scan Here</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- KẾT THÚC THẺ COMPACT -->
 
             <div class="modal-overlay" id="bankModal">
                 <div class="bank-info-box">
@@ -1223,49 +1732,48 @@
                     <p style="margin-top:10px; color:#666">Cảm ơn tình cảm của bạn!</p>
 
                     <div class="bank-qr">
-                        <img src="https://lamltf.github.io/wedding-invitation/assets/qr.png" alt="QR Code"
-                            style="width:100%; height:100%; object-fit:contain;">
+                        <img src="./assets/qr.png" alt="QR Code" style="width:100%; height:100%; object-fit:contain;">
                     </div>
 
-                    <a href="https://lamltf.github.io/wedding-invitation/assets/qr.png"
-                        download="QR_Mung_Cuoi_Phong_Quynh" class="download-btn">
+                    <a href="./assets/qr.png" download="QR_Mung_Cuoi_Phong_Quynh" class="download-btn">
                         <i class="fa-solid fa-download"></i> Tải Mã QR
                     </a>
 
                     <p style="font-weight:bold; color:var(--primary-color)">Ngân hàng TPBANK</p>
-                    <p>STK: 5221 812 1999</p>
-                    <p>Chủ TK: VU QUOC PHONG</p>
+                    <p>STK: 72238398888</p>
+                    <p>Chủ TK: VU TIEN TRIEN</p>
                 </div>
             </div>
             <div class="content-block">
                 <h2 class="section-title">Album Ảnh Cưới</h2>
-                <p style="font-style: italic; color: #888; margin-bottom: 15px; font-size: 0.9rem;">Những khoảnh khắc
+                <p style="font-style: italic; color: #888; margin-bottom: 15px; font-size: 0.9rem;">Những khoảnh
+                    khắc
                     đẹp nhất</p>
 
                 <div class="gallery-grid">
                     <div class="gallery-item tall scroll-element scroll-from-left">
-                        <img src="https://lamltf.github.io/wedding-invitation/assets/wd1.JPG" alt="1">
+                        <img src="./assets/wd1.jpg" alt="1">
                     </div>
 
                     <div class="gallery-item scroll-element scroll-from-right">
-                        <img src="https://lamltf.github.io/wedding-invitation/assets/wd2.JPG" alt="2">
+                        <img src="./assets/wd2.jpg" alt="2">
                     </div>
 
                     <div class="gallery-item scroll-element scroll-from-right">
-                        <img src="https://lamltf.github.io/wedding-invitation/assets/wd3.JPG" alt="3">
+                        <img src="./assets/wd3.jpg" alt="3">
                     </div>
 
 
                     <div class="gallery-item scroll-element scroll-from-left">
-                        <img src="https://lamltf.github.io/wedding-invitation/assets/wd4.JPG" alt="4">
+                        <img src="./assets/wd4.jpg" alt="4">
                     </div>
 
                     <div class="gallery-item tall scroll-element scroll-from-right">
-                        <img src="https://lamltf.github.io/wedding-invitation/assets/wd5.JPG" alt="5">
+                        <img src="./assets/wd5.jpg" alt="5">
                     </div>
 
                     <div class="gallery-item scroll-element scroll-from-left">
-                        <img src="https://lamltf.github.io/wedding-invitation/assets/wd6.JPG" alt="6">
+                        <img src="./assets/wd6.jpg" alt="6">
                     </div>
                 </div>
             </div>
@@ -1286,14 +1794,14 @@
             <div class="content-block">
 
                 <div class="names-container">
-                    <span class="name-part scroll-element scroll-from-left">Quốc Phong</span>
+                    <span class="name-part scroll-element scroll-from-left">Tiến Triển</span>
 
                     <span class="name-part symbol scroll-element scroll-up">&</span>
 
-                    <span class="name-part scroll-element scroll-from-right">Diễm Quỳnh</span>
+                    <span class="name-part scroll-element scroll-from-right">Thuỳ Linh</span>
                 </div>
 
-                <div class="date-highlight" style="margin-top: 20px; margin-bottom: 20px;">20 . 12 . 2025</div>
+                <div class="date-highlight" style="margin-top: 20px; margin-bottom: 20px;">24 . 10 . 2026</div>
 
                 <p class="scroll-element scroll-up" style="font-family: 'Dancing Script'; font-size: 1.6rem;">
                     Rất Hân Hạnh Được Đón Tiếp!
@@ -1306,7 +1814,7 @@
     <!-- nhạc nền  -->
 
     <audio id="bg-music" loop>
-        <source src="https://lamltf.github.io/wedding-invitation/assets/wedding.mp3" type="audio/mpeg">
+        <source src="./assets/wedding.mp3" type="audio/mpeg">
     </audio>
 
     <button id="music-btn" class="music-control" onclick="toggleMusic()">
@@ -1319,18 +1827,6 @@
 
     <script>
         /* --- JS CHO PHẦN CHÍNH --- */
-        function autoOpenEnvelope() {
-            const envelope = document.getElementById('envelope');
-            const mainContent = document.getElementById('mainContent');
-            envelope.classList.add('open');
-            setTimeout(() => {
-                mainContent.style.display = 'block';
-                initScrollObserver();
-                // Khởi tạo Album khi nội dung hiện ra
-                initAlbum();
-            }, 1500);
-        }
-
         function createCalendar(year, month, highlightDay) {
             const container = document.getElementById('calendar-days');
             const date = new Date(year, month - 1, 1);
@@ -1364,47 +1860,47 @@
         // Danh sách ảnh mẫu (Bạn hãy thay link ảnh của bạn vào đây)
         const albumPhotos = [
             {
-                url: 'https://lamltf.github.io/wedding-invitation/assets/wd3.JPG',
+                url: './assets/wd3.jpg',
                 caption: "Nơi tình yêu bắt đầu"
             },
             {
-                url: 'https://lamltf.github.io/wedding-invitation/assets/wd7.JPG',
+                url: './assets/wd7.jpg',
                 caption: "Ngày đôi mình chung đôi"
             },
             {
-                url: 'https://lamltf.github.io/wedding-invitation/assets/wd8.JPG',
+                url: './assets/wd8.jpg',
                 caption: "Nắm tay nhau đi khắp thế gian"
             },
             {
-                url: 'https://lamltf.github.io/wedding-invitation/assets/wd9.JPG',
+                url: './assets/wd9.jpg',
                 caption: "Bình yên là khi có anh"
             },
             {
-                url: 'https://lamltf.github.io/wedding-invitation/assets/wd10.JPG',
+                url: './assets/wd10.jpg',
                 caption: "Đúng người, đúng thời điểm"
             },
             {
-                url: 'https://lamltf.github.io/wedding-invitation/assets/wd11.JPG',
+                url: './assets/wd11.jpg',
                 caption: "Về chung một mái nhà"
             },
             {
-                url: 'https://lamltf.github.io/wedding-invitation/assets/wd6.JPG',
+                url: './assets/wd6.jpg',
                 caption: "Mảnh ghép hoàn hảo"
             },
             {
-                url: 'https://lamltf.github.io/wedding-invitation/assets/wd5.JPG',
+                url: './assets/wd5.jpg',
                 caption: "Cùng nhau già đi nhé"
             },
             {
-                url: 'https://lamltf.github.io/wedding-invitation/assets/wd4.JPG',
+                url: './assets/wd4.jpg',
                 caption: "Hạnh phúc trọn vẹn"
             },
             {
-                url: 'https://lamltf.github.io/wedding-invitation/assets/wd2.JPG',
+                url: './assets/wd2.jpg',
                 caption: "Chuyện tình mình đẹp như thơ"
             },
             {
-                url: 'https://lamltf.github.io/wedding-invitation/assets/wd1.JPG',
+                url: './assets/wd1.jpg',
                 caption: "Mãi mãi một tình yêu"
             }
         ];
@@ -1544,33 +2040,10 @@
         // --- CÁC HÀM KHÁC CỦA TRANG WEB ---
         // (Giữ nguyên các hàm lịch, mở phong bì của bạn ở đây)
 
-        function autoOpenEnvelope() {
-            const envelope = document.getElementById('envelope');
-            const mainContent = document.getElementById('mainContent');
-            envelope.classList.add('open');
-
-            // Thử phát nhạc ngay khi phong bì mở (nếu trình duyệt cho phép)
-            bgMusic.play().then(() => updateMusicUI(true)).catch(() => { });
-
-            setTimeout(() => {
-                mainContent.style.display = 'block';
-                initScrollObserver();
-                if (typeof initAlbum === "function") initAlbum();
-            }, 1500);
-        }
-
-        // ... (Các hàm createCalendar, initScrollObserver, initAlbum giữ nguyên) ...
-
-        window.onload = function () {
-            if (typeof createCalendar === "function") createCalendar(2025, 12, 20);
-            setTimeout(autoOpenEnvelope, 1500);
-        };
-
         /* --- XỬ LÝ NÚT BACK TO TOP --- */
         const backToTopBtn = document.getElementById('back-to-top-btn');
 
         window.addEventListener('scroll', () => {
-            // Nếu cuộn quá 300px thì hiện nút
             if (window.scrollY > 300) {
                 backToTopBtn.classList.add('show');
             } else {
@@ -1578,39 +2051,64 @@
             }
         });
 
-        // Hàm cuộn mượt lên đầu
         function scrollToTop() {
             window.scrollTo({
                 top: 0,
-                behavior: 'smooth' // Cuộn mượt mà
+                behavior: 'smooth'
             });
         }
 
         /* --- TỰ ĐỘNG LẤY TÊN KHÁCH TỪ URL --- */
         function checkGuestName() {
-            // 1. Lấy toàn bộ tham số trên thanh địa chỉ
             const urlParams = new URLSearchParams(window.location.search);
-
-            // 2. Tìm tham số có tên là "k" (viết tắt của Khách) hoặc "guest"
-            // Ví dụ link: thiepcuoi.com?k=Anh%20Nam
             const guestName = urlParams.get('k') || urlParams.get('guest');
-
-            // 3. Nếu tìm thấy tên thì thay thế vào
             if (guestName) {
-                // Giải mã ký tự đặc biệt (ví dụ %20 thành khoảng trắng)
-                // và gán vào thẻ h3
                 document.getElementById('guest-name').innerText = guestName;
             }
         }
 
-        // Chạy hàm này ngay khi tải trang
-        window.addEventListener('load', checkGuestName);
 
-        /* --- KHỞI CHẠY --- */
-        window.onload = function () {
-            createCalendar(2025, 12, 20);
-            setTimeout(autoOpenEnvelope, 1500);
-        };
+        /* --- JS ĐẾM NGƯỢC THỜI GIAN MỚI (24/10/2026) --- */
+        function initElegantCountdown() {
+            // Đặt thời gian lễ cưới: Thứ 7, 24/10/2026 lúc 16:30 chiều
+            const countDownDate = new Date("Oct 24, 2026 16:30:00").getTime();
+
+            const x = setInterval(function () {
+                const now = new Date().getTime();
+                const distance = countDownDate - now;
+
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("ecd-days").innerText = "00";
+                    document.getElementById("ecd-hours").innerText = "00";
+                    document.getElementById("ecd-minutes").innerText = "00";
+                    document.getElementById("ecd-seconds").innerText = "00";
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Hiển thị ra màn hình (đảm bảo luôn có 2 chữ số)
+                document.getElementById("ecd-days").innerText = String(days).padStart(2, '0');
+                document.getElementById("ecd-hours").innerText = String(hours).padStart(2, '0');
+                document.getElementById("ecd-minutes").innerText = String(minutes).padStart(2, '0');
+                document.getElementById("ecd-seconds").innerText = String(seconds).padStart(2, '0');
+            }, 1000);
+        }
+
+        /* --- KHỞI CHẠY TRANG WEB --- */
+        function initPage() {
+            if (typeof createCalendar === "function") createCalendar(2026, 10, 24);
+            if (typeof initScrollObserver === "function") initScrollObserver();
+            if (typeof initAlbum === "function") initAlbum();
+            checkGuestName();
+            initElegantCountdown();
+        }
+
+        window.addEventListener('load', initPage);
 
     </script>
 </body>
