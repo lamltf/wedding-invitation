@@ -41,6 +41,7 @@
         }
 
         input[type="text"],
+        select,
         textarea {
             width: 100%;
             padding: 10px;
@@ -165,6 +166,13 @@
                 <label>Nhập tên khách mời:</label>
                 <input type="text" id="guestName" placeholder="Ví dụ: Bạn Lâm và Người Thương">
             </div>
+            <div class="group">
+                <label>Chọn khung giờ tổ chức:</label>
+                <select id="eventTime">
+                    <option value="10:00 AM" selected>10:00 AM (Mặc định)</option>
+                    <option value="17:30 PM">17:30 PM</option>
+                </select>
+            </div>
             <button onclick="generateSingle()">Tạo Link Ngay</button>
 
             <div id="singleResult" class="result-box">
@@ -178,8 +186,16 @@
 
         <div id="bulk" class="content">
             <div class="group">
+                <label>Chọn khung giờ áp dụng chung:</label>
+                <select id="bulkEventTime">
+                    <option value="10:00 AM" selected>10:00 AM (Mặc định)</option>
+                    <option value="17:30 PM">17:30 PM</option>
+                </select>
+            </div>
+            <div class="group">
                 <label>Dán danh sách tên (Mỗi tên 1 dòng):</label>
-                <textarea id="guestList" placeholder="Anh Tuấn&#10;Chị Lan&#10;Gia đình bác Bảy..."></textarea>
+                <textarea id="guestList"
+                    placeholder="Anh Tuấn&#10;Chị Lan | 17:30 PM&#10;Gia đình bác Bảy..."></textarea>
             </div>
             <button onclick="generateBulk()">Xử lý danh sách</button>
 
@@ -203,13 +219,15 @@
         function generateSingle() {
             const baseUrl = document.getElementById('baseUrl').value;
             const name = document.getElementById('guestName').value.trim();
+            const time = document.getElementById('eventTime').value.trim();
 
-            if (!name) { alert("Vui lòng nhập tên khách!"); return; }
+            if (!name && !time) { alert("Vui lòng nhập tên khách hoặc thời gian!"); return; }
 
-            // Encode tên để xử lý tiếng Việt và ký tự đặc biệt
-            const encodedName = encodeURIComponent(name);
-            // Tạo link chuẩn: thêm tham số ?k=
-            const fullLink = `${baseUrl}?k=${encodedName}`;
+            const url = new URL(baseUrl);
+            if (name) url.searchParams.set('k', name);
+            if (time) url.searchParams.set('t', time);
+
+            const fullLink = url.toString();
 
             const linkEl = document.getElementById('finalLink');
             const resultBox = document.getElementById('singleResult');
@@ -223,26 +241,39 @@
         function generateBulk() {
             const baseUrl = document.getElementById('baseUrl').value;
             const text = document.getElementById('guestList').value.trim();
+            const defaultTime = document.getElementById('bulkEventTime').value.trim();
             const resultBox = document.getElementById('bulkResult');
 
             if (!text) { alert("Vui lòng nhập danh sách!"); return; }
 
-            const names = text.split('\n'); // Tách từng dòng
+            const lines = text.split('\n'); // Tách từng dòng
             resultBox.innerHTML = ''; // Xóa cũ
             resultBox.classList.add('show');
 
-            names.forEach(name => {
-                name = name.trim();
-                if (name) {
-                    const encodedName = encodeURIComponent(name);
-                    const fullLink = `${baseUrl}?k=${encodedName}`;
+            lines.forEach(line => {
+                line = line.trim();
+                if (line) {
+                    let name = line;
+                    let time = defaultTime;
+
+                    if (line.includes('|')) {
+                        const parts = line.split('|');
+                        name = parts[0].trim();
+                        time = parts[1].trim();
+                    }
+
+                    const url = new URL(baseUrl);
+                    if (name) url.searchParams.set('k', name);
+                    if (time) url.searchParams.set('t', time);
+
+                    const fullLink = url.toString();
 
                     // Tạo HTML hiển thị
                     const div = document.createElement('div');
                     div.className = 'link-item';
                     div.innerHTML = `
                     <div style="flex:1">
-                        <strong>${name}</strong><br>
+                        <strong>${name}</strong> ${time ? `<span style="color:#666; font-size:0.85rem">(${time})</span>` : ''}<br>
                         <a href="${fullLink}" target="_blank" class="link-url" style="font-size:0.85rem">${fullLink}</a>
                     </div>
                     <button class="copy-btn" onclick="copyText('${fullLink}')">Copy</button>

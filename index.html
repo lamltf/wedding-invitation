@@ -1440,7 +1440,7 @@
                     <div class="date-center">24</div>
                     <div class="date-right">2026</div>
                 </div>
-                <div class="date-bottom">10:00 AM & 17:30PM</div>
+                <div class="date-bottom">10:00 AM</div>
             </div>
         </div>
 
@@ -1503,7 +1503,7 @@
                 style="margin-top: 30px; margin-bottom: 30px; padding: 20PX 20px; background: #fafafa;">
 
                 <div class="envelope-section">
-                    <img src="./assets/wd3.jpg" alt="Wedding">
+                    <img src="./assets/middle.jpg" alt="Wedding">
                 </div>
                 <div class="scroll-element scroll-from-left">
                     <h3
@@ -2127,7 +2127,7 @@
             });
         }
 
-        /* --- TỰ ĐỘNG LẤY TÊN KHÁCH TỪ URL --- */
+        /* --- TỰ ĐỘNG LẤY TÊN KHÁCH VÀ THỜI GIAN TỪ URL --- */
         function checkGuestName() {
             const urlParams = new URLSearchParams(window.location.search);
             let guestName = urlParams.get('k') || urlParams.get('guest');
@@ -2150,6 +2150,28 @@
                 const guestEl = document.getElementById('guest-name');
                 if (guestEl && guestName) {
                     guestEl.innerText = guestName;
+                }
+            }
+
+            // Lấy tham số thời gian (t hoặc time)
+            let eventTime = urlParams.get('t') || urlParams.get('time');
+            if (eventTime) {
+                try {
+                    let decodedTime = eventTime;
+                    for (let i = 0; i < 3; i++) {
+                        if (!decodedTime.includes('%')) break;
+                        const next = decodeURIComponent(decodedTime);
+                        if (next === decodedTime) break;
+                        decodedTime = next;
+                    }
+                    eventTime = decodedTime.replace(/\+/g, ' ').replace(/%20/g, ' ').trim();
+                } catch (e) {
+                    eventTime = eventTime.replace(/%20/g, ' ').replace(/\+/g, ' ').trim();
+                }
+
+                const dateBottomEl = document.querySelector('.date-bottom');
+                if (dateBottomEl && eventTime) {
+                    dateBottomEl.innerText = eventTime;
                 }
             }
         }
