@@ -1845,11 +1845,11 @@
 
     <!-- nhạc nền  -->
 
-    <audio id="bg-music" loop autoplay>
+    <audio id="bg-music" loop preload="auto" playsinline webkit-playsinline src="./assets/wedding.mp3">
         <source src="./assets/wedding.mp3" type="audio/mpeg">
     </audio>
 
-    <button id="music-btn" class="music-control" onclick="toggleMusic()">
+    <button id="music-btn" class="music-control" onclick="toggleMusic(event)">
         <i class="fa-solid fa-volume-xmark" id="music-icon"></i>
     </button>
 
@@ -2013,30 +2013,17 @@
                 toggleModal(false);
             }
         });
-        /* --- CẤU HÌNH NHẠC NỀN (FIX LỖI AUTOPLAY) --- */
+
+        /* --- CẤU HÌNH NHẠC NỀN (TỐI ƯU CHO WEBVIEW MESSENGER, ZALO, SAFARI, CHROME) --- */
         const bgMusic = document.getElementById('bg-music');
         const musicBtn = document.getElementById('music-btn');
         const musicIcon = document.getElementById('music-icon');
 
-        // Hàm bật/tắt nhạc khi bấm vào nút
-        function toggleMusic() {
-            // Nếu nhạc đang tạm dừng -> Bật
-            if (bgMusic.paused) {
-                bgMusic.play().then(() => {
-                    updateMusicUI(true);
-                }).catch(err => {
-                    console.error("Lỗi phát nhạc:", err);
-                });
-            }
-            // Nếu nhạc đang chạy -> Tắt
-            else {
-                bgMusic.pause();
-                updateMusicUI(false);
-            }
-        }
+        let userManuallyPaused = false;
 
-        // Hàm cập nhật giao diện nút bấm (Xoay/Dừng, Icon)
+        // Cập nhật giao diện nút bấm nhạc (Xoay/Dừng, Icon)
         function updateMusicUI(isPlaying) {
+            if (!musicBtn || !musicIcon) return;
             if (isPlaying) {
                 musicBtn.classList.add('playing');
                 musicIcon.classList.remove('fa-volume-xmark');
@@ -2048,29 +2035,76 @@
             }
         }
 
-        // --- LOGIC TỰ ĐỘNG PHÁT KHI CÓ TƯƠNG TÁC ---
-        // Thay vì cố phát ngay lập tức, ta chờ người dùng chạm vào web lần đầu tiên
-        function firstInteraction() {
-            // Chỉ phát nếu nhạc chưa chạy
-            if (bgMusic.paused) {
-                bgMusic.play().then(() => {
-                    updateMusicUI(true);
-                }).catch(error => {
-                    console.log("Vẫn chưa được phép phát nhạc, chờ tương tác tiếp theo.");
-                });
+        // Hàm phát nhạc an toàn
+        function attemptPlayAudio(silent = false) {
+            if (!bgMusic || userManuallyPaused) return;
+
+            if (!bgMusic.paused) {
+                updateMusicUI(true);
+                removeInteractionListeners();
+                return;
             }
 
-            // Quan trọng: Sau khi chạm lần đầu, gỡ bỏ sự kiện này để không bị lặp lại
-            document.removeEventListener('click', firstInteraction);
-            document.removeEventListener('touchstart', firstInteraction);
-            document.removeEventListener('scroll', firstInteraction);
+            const playPromise = bgMusic.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    updateMusicUI(true);
+                    removeInteractionListeners();
+                }).catch(err => {
+                    if (!silent) {
+                        console.log("Audio play waiting for user gesture:", err.message);
+                    }
+                    updateMusicUI(false);
+                });
+            }
         }
 
-        // Gán sự kiện lắng nghe vào toàn bộ trang web
-        // { once: true } nghĩa là chỉ chạy 1 lần duy nhất rồi tự hủy
-        document.addEventListener('click', firstInteraction, { once: true });
-        document.addEventListener('touchstart', firstInteraction, { once: true });
-        document.addEventListener('scroll', firstInteraction, { once: true });
+        // Hàm bật/tắt nhạc khi bấm trực tiếp vào nút
+        function toggleMusic(e) {
+            if (e) {
+                e.stopPropagation();
+            }
+
+            if (!bgMusic) return;
+
+            if (bgMusic.paused) {
+                userManuallyPaused = false;
+                bgMusic.play().then(() => {
+                    updateMusicUI(true);
+                    removeInteractionListeners();
+                }).catch(err => {
+                    console.error("Lỗi phát nhạc khi bấm nút:", err);
+                    updateMusicUI(false);
+                });
+            } else {
+                userManuallyPaused = true;
+                bgMusic.pause();
+                updateMusicUI(false);
+            }
+        }
+
+        // Xử lý sự kiện tương tác chạm / click từ người dùng
+        function handleUserInteraction() {
+            if (userManuallyPaused) return;
+            attemptPlayAudio(false);
+        }
+
+        const interactionEvents = ['click', 'touchend', 'pointerdown'];
+
+        function addInteractionListeners() {
+            interactionEvents.forEach(evt => {
+                document.addEventListener(evt, handleUserInteraction, { passive: true });
+            });
+        }
+
+        function removeInteractionListeners() {
+            interactionEvents.forEach(evt => {
+                document.removeEventListener(evt, handleUserInteraction);
+            });
+        }
+
+        // Kích hoạt lắng nghe tương tác ngay khi trang tải
+        addInteractionListeners();
 
         // --- CÁC HÀM KHÁC CỦA TRANG WEB ---
         // (Giữ nguyên các hàm lịch, mở phong bì của bạn ở đây)
@@ -2159,6 +2193,7 @@
             if (typeof initAlbum === "function") initAlbum();
             checkGuestName();
             initElegantCountdown();
+            attemptPlayAudio(true);
         }
 
         window.addEventListener('load', initPage);
