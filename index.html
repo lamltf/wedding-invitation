@@ -2096,9 +2096,27 @@
         /* --- TỰ ĐỘNG LẤY TÊN KHÁCH TỪ URL --- */
         function checkGuestName() {
             const urlParams = new URLSearchParams(window.location.search);
-            const guestName = urlParams.get('k') || urlParams.get('guest');
+            let guestName = urlParams.get('k') || urlParams.get('guest');
             if (guestName) {
-                document.getElementById('guest-name').innerText = guestName;
+                try {
+                    // Xử lý decode đa tầng (tránh lỗi double-encoding của Messenger/Zalo WebView)
+                    let decoded = guestName;
+                    for (let i = 0; i < 3; i++) {
+                        if (!decoded.includes('%')) break;
+                        const next = decodeURIComponent(decoded);
+                        if (next === decoded) break;
+                        decoded = next;
+                    }
+                    // Thay thế tất cả %20 hoặc + còn sót lại thành khoảng trắng
+                    guestName = decoded.replace(/\+/g, ' ').replace(/%20/g, ' ').trim();
+                } catch (e) {
+                    guestName = guestName.replace(/%20/g, ' ').replace(/\+/g, ' ').trim();
+                }
+
+                const guestEl = document.getElementById('guest-name');
+                if (guestEl && guestName) {
+                    guestEl.innerText = guestName;
+                }
             }
         }
 
