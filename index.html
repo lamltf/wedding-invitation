@@ -5,20 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thiệp Cưới: Tiến Triển & Thuỳ Linh</title>
+    <!-- Open Graph / Facebook / Zalo -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="./">
+    <meta property="og:url" content="https://trienlinhwedding.tkc.io.vn/">
     <meta property="og:title" content="Thiệp cưới — Tiến Triển & Thuỳ Linh">
     <meta property="og:description" content="Trân trọng kính mời quý khách đến dự lễ thành hôn của chúng tôi.">
     <meta property="og:site_name" content="Thiệp cưới Tiến Triển & Thuỳ Linh">
 
-    <meta property="og:image" content="./thumb.png">
-    <meta property="og:image:secure_url" content="./thumb.png">
+    <meta property="og:image" content="https://trienlinhwedding.tkc.io.vn/thumb.png">
+    <meta property="og:image:secure_url" content="https://trienlinhwedding.tkc.io.vn/thumb.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="315">
     <meta property="og:image:alt" content="Ảnh cưới Tiến Triển & Thuỳ Linh">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Thiệp cưới — Tiến Triển & Thuỳ Linh">
     <meta name="twitter:description" content="Trân trọng kính mời quý khách đến dự lễ thành hôn của chúng tôi.">
-    <meta name="twitter:image" content="./thumb.png">
+    <meta name="twitter:image" content="https://trienlinhwedding.tkc.io.vn/thumb.png">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link
@@ -930,7 +934,7 @@
             font-size: 1.2rem;
             letter-spacing: 0.3em;
             color: #222;
-            margin-bottom: 5px;
+            margin-bottom: 12px;
             font-weight: normal;
         }
 
@@ -1065,7 +1069,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px 10px;
+            padding: 22px 12px;
             background-color: #ffffff;
             text-align: center;
         }
@@ -1084,101 +1088,71 @@
             object-fit: cover;
             object-position: top center;
             display: block;
-            /* Giữ màu sắc gốc của ảnh, không dùng hiệu ứng trắng đen */
         }
 
-        /* Tiêu đề */
-        .alt-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            letter-spacing: 0.25em;
-            color: #222;
-            font-weight: normal;
-            margin-bottom: 3px;
+        /* Label / Title */
+        .alt-wedding-title {
+            /* font-family: 'Playfair Display', serif; */
+            font-size: 1.05rem;
+            letter-spacing: 0.05em;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 6px;
+            text-transform: uppercase;
         }
 
-        .alt-subtitle {
-            font-family: sans-serif;
-            font-size: 0.7rem;
-            color: #888;
-            letter-spacing: 0.15em;
-            margin-bottom: 25px;
-        }
-
-        /* Nút bấm điều hướng bản đồ */
-        .alt-btn-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-decoration: none;
-            transition: transform 0.3s ease;
-        }
-
-        .alt-btn-item:hover {
-            transform: scale(1.05);
-        }
-
-        .alt-icon-circle {
-            width: 55px;
-            height: 55px;
-            background-color: #222;
-            color: #fff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-            transition: background-color 0.3s;
-        }
-
-        .alt-btn-item:hover .alt-icon-circle {
-            background-color: var(--primary-color);
-        }
-
-        .alt-btn-item span {
+        .alt-wedding-time {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.65rem;
-            letter-spacing: 0.15em;
-            color: #444;
+            font-size: 0.68rem;
             font-weight: 600;
+            color: #444;
+            margin-bottom: 10px;
+            padding: 4px 10px;
+            background: #faf2f2;
+            border-radius: 12px;
+            border: 1px solid #efe4d4;
+            display: inline-block;
         }
 
-        /* Phần liên hệ gọi điện */
-        .alt-contact-person {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .alt-person-name {
+        .alt-wedding-venue {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.7rem;
-            letter-spacing: 0.15em;
+            font-size: 0.68rem;
             color: #333;
-            margin-bottom: 8px;
-            font-weight: 500;
+            line-height: 1.5;
+            margin-bottom: 14px;
+            padding: 0 4px;
         }
 
-        .alt-call-btn {
-            width: 45px;
-            height: 45px;
-            background-color: #222;
-            color: #fff;
-            border-radius: 50%;
-            display: flex;
+        .alt-wedding-venue strong {
+            color: #222;
+            font-weight: 700;
+        }
+
+        /* Nút chỉ đường */
+        .alt-map-btn {
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
+            gap: 6px;
+            padding: 8px 18px;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            border-radius: 20px;
             text-decoration: none;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.62rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            box-shadow: 0 3px 10px rgba(140, 115, 85, 0.25);
             transition: all 0.3s ease;
         }
 
-        .alt-call-btn:hover {
-            background-color: var(--primary-color);
-            transform: scale(1.1);
+        .alt-map-btn:hover {
+            background-color: #6e5940;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(140, 115, 85, 0.4);
+            color: #ffffff;
         }
 
         /* --- STYLES CHO THẺ THÔNG TIN BÀI HÁT TỐI GIẢN --- */
@@ -1274,7 +1248,7 @@
         /* Dải màu trang trí dọc bên trái */
         .bp-left-strip {
             width: 22px;
-            background-color: #b89753;
+            background-color: var(--primary-color);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1314,7 +1288,7 @@
 
         .bp-date-badge {
             font-size: 0.55rem;
-            color: #8c7355;
+            color: var(--primary-color);
             font-weight: 600;
         }
 
@@ -1393,9 +1367,49 @@
             font-family: 'Montserrat', sans-serif;
             font-size: 0.45rem;
             letter-spacing: 1.5px;
-            color: #8c7355;
+            color: var(--primary-color);
             margin-top: 4px;
             font-weight: 600;
+        }
+
+        /* --- ẢNH CHÍNH (MAIN PHOTO) --- */
+        .envelope-section-1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 24px auto 24px auto;
+            padding: 0 20px;
+            opacity: 0;
+            animation: fadeInUp 1.2s ease-out 1s forwards;
+        }
+
+        .envelope-section-1 img {
+            width: 100%;
+            max-width: 100px;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        /* --- ẢNH CHÍNH (MAIN PHOTO) --- */
+        .envelope-section-2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            opacity: 0;
+            animation: fadeInUp 1.2s ease-out 1s forwards;
+        }
+
+        .envelope-section-2 img {
+            width: 100%;
+            max-width: 40px;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            object-position: center top;
         }
     </style>
 </head>
@@ -1413,22 +1427,24 @@
         <div class="header">
             <div class="names-container">
                 <span class="name-part left">TRIỂN</span>
-                <span class="name-part symbol">&</span>
+                <div class="envelope-section-2">
+                    <img src="./assets/ring.png" alt="Wedding">
+                </div>
                 <span class="name-part right">LINH</span>
             </div>
             <div class="date-highlight">24 . 10 . 2026</div>
             <div class="date-highlight-2">
-                <div class="date-top">SATURDAY</div>
+                <div class="date-top">Thứ Bảy</div>
                 <div class="date-middle">
-                    <div class="date-left">OCT</div>
+                    <div class="date-left">Mười</div>
                     <div class="date-center">24</div>
                     <div class="date-right">2026</div>
                 </div>
-                <div class="date-bottom">16:30PM</div>
+                <div class="date-bottom">10:00 AM & 17:30PM</div>
             </div>
         </div>
 
-        <!-- THẺ THÔNG TIN BÀI HÁT TỐI GIẢN -->
+        <!-- THẺ THÔNG TIN BÀI HÁT TỐI GIẢN
         <div class="content-block scroll-element scroll-from-left">
             <div class="music-widget-card">
                 <div class="mw-top-row">
@@ -1444,7 +1460,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- KẾT THÚC THẺ THÔNG TIN BÀI HÁT -->
         <div id="mainContent">
             <div class="content-block" style="padding-top: 0;">
@@ -1481,16 +1497,42 @@
                 </div>
             </div>
 
-            <div class="envelope-section">
-                <img src="./assets/middle.jpg" alt="Wedding">
+
+
+            <div class="content-block"
+                style="margin-top: 30px; margin-bottom: 30px; padding: 20PX 20px; background: #fafafa;">
+
+                <div class="envelope-section">
+                    <img src="./assets/wd3.jpg" alt="Wedding">
+                </div>
+                <div class="scroll-element scroll-from-left">
+                    <h3
+                        style="font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--primary-color); margin-bottom: 12px; letter-spacing: 0.05em; text-transform: uppercase;">
+                        Thư Mời Cưới</h3>
+                    <p
+                        style="color: #555; line-height: 1.8; font-size: 0.92rem; font-style: italic; max-width: 480px; margin: 0 auto; text-align: justify;">
+                        "Chúng mình sắp bắt đầu một hành trình cùng nhau. Niềm vui này sẽ trọn vẹn hơn khi có bạn bên
+                        cạnh. Cuộc sống quý giá không chỉ ở đích đến, mà còn ở những khoảnh khắc chia sẻ cùng nhau. Vì
+                        vậy, chúng mình mong được bạn chung vui trong ngày hạnh phúc này."
+                    </p>
+                </div>
             </div>
 
-            <div class="content-block" style="margin-top: 30px; margin-bottom: 30px;">
-                <div class="scroll-element scroll-up">
-                    <p style="color: #555; line-height: 1.6;">Khi mây mờ tan đi,
-                    </p>
-                    <p style="color: #555; line-height: 1.6;">Cả thế giới đều biết rằng anh yêu em.
-                    </p>
+            <div class="content-block" style="margin-top: 30px; margin-bottom: 30px; padding: 0 20px;">
+                <div id="card-evn">
+                    <div class="family-box scroll-element scroll-from-right">
+                        <h4 style="color: #8E0E0E !important">LỄ VU QUY ĐƯỢC CỬ HÀNH TẠI TƯ GIA NHÀ GÁI</h4>
+                        <h4 style="color: #8E0E0E !important">VÀO LÚC: 13 GIỜ 00 - CHỦ NHẬT 25/10/2026</h4>
+                        <h4 style="color: #8E0E0E !important">(NHẰM NGÀY 16 THÁNG 9 NĂM BÍNH NGỌ)</h4>
+                    </div>
+                    <div class="envelope-section-1">
+                        <img src="./assets/hy.png" alt="Wedding">
+                    </div>
+                    <div class="family-box scroll-element scroll-from-left">
+                        <h4 style="color: #8E0E0E !important">LỄ THÀNH HÔN ĐƯỢC CỬ HÀNH TẠI TƯ GIA NHÀ TRAI</h4>
+                        <h4 style="color: #8E0E0E !important">VÀO LÚC: 15 GIỜ 00 - CHỦ NHẬT 25/10/2026</h4>
+                        <h4 style="color: #8E0E0E !important">(NHẰM NGÀY 16 THÁNG 9 NĂM BÍNH NGỌ)</h4>
+                    </div>
                 </div>
             </div>
 
@@ -1537,40 +1579,38 @@
                         </p>
             </div> -->
 
-            <div class="content-block scroll-element scroll-up">
-                <!-- ĐOẠN COUNTDOWN & TIMELINE MỚI -->
-                <div class="elegant-section scroll-element scroll-up">
+            <!-- ĐOẠN COUNTDOWN & TIMELINE MỚI -->
+            <div class="elegant-section scroll-element scroll-up">
 
-                    <!-- COUNTDOWN -->
-                    <h2 class="elegant-title">THỜI GIAN DIỄN RA</h2>
+                <!-- COUNTDOWN -->
+                <h2 class="elegant-title">C O U N T D O W N</h2>
 
-                    <div class="elegant-countdown">
-                        <div class="ecd-item">
-                            <div class="ecd-num" id="ecd-days">00</div>
-                            <div class="ecd-label">NGÀY</div>
-                        </div>
-                        <div class="ecd-sep">:</div>
-                        <div class="ecd-item">
-                            <div class="ecd-num" id="ecd-hours">00</div>
-                            <div class="ecd-label">GIỜ</div>
-                        </div>
-                        <div class="ecd-sep">:</div>
-                        <div class="ecd-item">
-                            <div class="ecd-num" id="ecd-minutes">00</div>
-                            <div class="ecd-label">PHÚT</div>
-                        </div>
-                        <div class="ecd-sep">:</div>
-                        <div class="ecd-item">
-                            <div class="ecd-num" id="ecd-seconds">00</div>
-                            <div class="ecd-label">GIÂY</div>
-                        </div>
+                <div class="elegant-countdown">
+                    <div class="ecd-item">
+                        <div class="ecd-num" id="ecd-days">00</div>
+                        <div class="ecd-label">NGÀY</div>
+                    </div>
+                    <div class="ecd-sep">:</div>
+                    <div class="ecd-item">
+                        <div class="ecd-num" id="ecd-hours">00</div>
+                        <div class="ecd-label">GIỜ</div>
+                    </div>
+                    <div class="ecd-sep">:</div>
+                    <div class="ecd-item">
+                        <div class="ecd-num" id="ecd-minutes">00</div>
+                        <div class="ecd-label">PHÚT</div>
+                    </div>
+                    <div class="ecd-sep">:</div>
+                    <div class="ecd-item">
+                        <div class="ecd-num" id="ecd-seconds">00</div>
+                        <div class="ecd-label">GIÂY</div>
                     </div>
                 </div>
             </div>
 
             <div class="content-block scroll-element scroll-up" style="background: #fafafa;">
                 <!-- TIMELINE MỚI -->
-                <h2 class="elegant-title">T I M E L I N E</h2>
+                <h2 class="elegant-title" style="margin-bottom: 20px;">T I M E L I N E</h2>
 
                 <div class="elegant-timeline">
                     <!-- Hàng 1: Đón Khách (15:30) -->
@@ -1584,7 +1624,7 @@
                             </div>
                             <div class="etl-text-title">ĐÓN KHÁCH<br><span class="etl-text-sub">Chụp hình
                                     check-in</span></div>
-                            <div class="etl-text-time">3:30 PM</div>
+                            <div class="etl-text-time">17:00 PM</div>
                         </div>
                     </div>
 
@@ -1601,7 +1641,7 @@
                             </div>
                             <div class="etl-text-title">KHAI TIỆC<br><span class="etl-text-sub">Làm lễ và dùng
                                     tiệc</span></div>
-                            <div class="etl-text-time">4:30 PM</div>
+                            <div class="etl-text-time">18:00 PM</div>
                         </div>
                     </div>
 
@@ -1617,61 +1657,53 @@
                             </div>
                             <div class="etl-text-title">PARTY<br><span class="etl-text-sub">Giao lưu âm nhạc</span>
                             </div>
-                            <div class="etl-text-time">8:00 PM</div>
+                            <div class="etl-text-time">20:00 PM</div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- KHỐI LOCATION & CONTACT SO LE -->
-            <!-- KHỐI LOCATION & CONTACT SO LE (ĐÃ ĐỔI VỊ TRÍ) -->
+            <!-- KHỐI SO LE THÔNG TIN TIỆC CƯỚI 2 NHÀ -->
             <div class="alternating-section scroll-element scroll-up">
 
-                <!-- HÀNG 1 (TRƯỚC LÀ DƯỚI): TRÁI LÀ ẢNH 2 - PHẢI LÀ NÚT CONTACT -->
+                <!-- NHÀ TRAI -->
                 <div class="alt-row">
                     <div class="alt-image-box">
-                        <img src="./assets/wd2.jpg" alt="Wedding Contact">
+                        <img src="./assets/wd2.jpg" alt="Tiệc cưới nhà trai">
                     </div>
                     <div class="alt-content-box">
-                        <h2 class="alt-title">C O N T A C T</h2>
-                        <p class="alt-subtitle"></p>
-
-                        <div class="alt-contacts-group">
-                            <!-- Chú rể -->
-                            <div class="alt-contact-person">
-                                <span class="alt-person-name">VŨ TIẾN TRIỂN</span>
-                                <a href="tel:0123456789" class="alt-call-btn">
-                                    <i class="fa-solid fa-phone"></i>
-                                </a>
-                            </div>
-                            <!-- Cô dâu -->
-                            <div class="alt-contact-person" style="margin-top: 25px;">
-                                <span class="alt-person-name">TRẦN THỊ THÙY LINH</span>
-                                <a href="tel:0987654321" class="alt-call-btn">
-                                    <i class="fa-solid fa-phone"></i>
-                                </a>
-                            </div>
+                        <h2 class="alt-wedding-title">Tiệc Cưới Nhà Trai</h2>
+                        <div class="alt-wedding-time">
+                            Thứ Bảy - 10h 24.10.2026
                         </div>
+                        <div class="alt-wedding-venue">
+                            Tại tư gia nhà trai<br>
+                            Phú Nhiêu - Phú Xuyên - Hà Nội
+                        </div>
+                        <a href="https://maps.app.goo.gl/tBiARiYaiwqKyyii9" target="_blank" class="alt-map-btn">
+                            <i class="fa-solid fa-location-dot"></i> Chỉ Đường
+                        </a>
                     </div>
                 </div>
 
-                <!-- HÀNG 2 (TRƯỚC LÀ TRÊN): TRÁI LÀ NÚT LOCATION - PHẢI LÀ ẢNH 1 -->
+                <!-- NHÀ GÁI -->
                 <div class="alt-row reverse">
                     <div class="alt-image-box">
-                        <img src="./assets/wd1.jpg" alt="Wedding Location">
+                        <img src="./assets/wd1.jpg" alt="Tiệc cưới nhà gái">
                     </div>
                     <div class="alt-content-box">
-                        <h2 class="alt-title">L O C A T I O N</h2>
-                        <p class="alt-subtitle"></p>
-
-                        <div class="alt-buttons-group">
-                            <a href="https://maps.app.goo.gl/dfd55d6ae29c644c" target="_blank" class="alt-btn-item">
-                                <div class="alt-icon-circle">
-                                    <i class="fa-solid fa-map-location-dot"></i>
-                                </div>
-                                <span>GOOGLE MAPS</span>
-                            </a>
+                        <h2 class="alt-wedding-title">Tiệc Cưới Nhà Gái</h2>
+                        <div class="alt-wedding-time">
+                            Thứ Bảy - 16h 24.10.2026
                         </div>
+                        <div class="alt-wedding-venue">
+                            Tại tư gia nhà gái<br>
+                            Nhà Văn hóa 187 Phố Chùa Quỳnh - Bạch Mai - Hà Nội
+                        </div>
+                        <a href="https://maps.google.com/?q=Nh%C3%A0+V%C6%B0%C6%A1n+H%C3%B3a+187+Ph%E1%BB%91+Ch%C3%B9a+Qu%E1%BB%B3nh+B%E1%BA%A1ch+Mai+H%C3%A0+N%E1%BB%99i"
+                            target="_blank" class="alt-map-btn">
+                            <i class="fa-solid fa-location-dot"></i> Chỉ Đường
+                        </a>
                     </div>
                 </div>
 
@@ -1695,7 +1727,7 @@
                                 <span class="bp-date-badge">24 . 10 . 2026</span>
                             </div>
 
-                            <div class="bp-names">Tiến Triển & Thuỳ Linh</div>
+                            <div class="bp-names">GỬI QUÀ MỪNG CƯỚI</div>
 
                             <div class="bp-footer-info">
                                 <div class="bp-col">
@@ -1827,11 +1859,14 @@
 
     <script>
         /* --- JS CHO PHẦN CHÍNH --- */
-        function createCalendar(year, month, highlightDay) {
+        function createCalendar(year, month, highlightDays) {
             const container = document.getElementById('calendar-days');
             const date = new Date(year, month - 1, 1);
             const daysInMonth = new Date(year, month, 0).getDate();
             container.innerHTML = "";
+
+            // Hỗ trợ truyền mảng hoặc 1 ngày lẻ
+            const highlights = Array.isArray(highlightDays) ? highlightDays : [highlightDays];
 
             let startDay = date.getDay();
             if (startDay === 0) startDay = 7;
@@ -1840,7 +1875,7 @@
                 const dayDiv = document.createElement('div');
                 dayDiv.classList.add('calendar-day');
                 dayDiv.innerHTML = `<span>${i}</span>`;
-                if (i === highlightDay) dayDiv.classList.add('active');
+                if (highlights.includes(i)) dayDiv.classList.add('active');
                 container.appendChild(dayDiv);
             }
         }
@@ -2101,7 +2136,7 @@
 
         /* --- KHỞI CHẠY TRANG WEB --- */
         function initPage() {
-            if (typeof createCalendar === "function") createCalendar(2026, 10, 24);
+            if (typeof createCalendar === "function") createCalendar(2026, 10, [24, 25]);
             if (typeof initScrollObserver === "function") initScrollObserver();
             if (typeof initAlbum === "function") initAlbum();
             checkGuestName();
