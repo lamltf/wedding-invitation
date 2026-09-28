@@ -23,10 +23,13 @@
     <meta name="twitter:title" content="Thiệp cưới — Tiến Triển & Thuỳ Linh">
     <meta name="twitter:description" content="Trân trọng kính mời quý khách đến dự lễ thành hôn của chúng tôi.">
     <meta name="twitter:image" content="https://trienlinhwedding.tkc.io.vn/thumb.png">
+    <link rel="icon" type="image/png" href="./assets/ring.png">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Quicksand:wght@300;400;600&display=swap"
         rel="stylesheet">
 
     <style>
@@ -194,32 +197,49 @@
             margin-bottom: 30px;
         }
 
-        /* --- ẢNH CHÍNH (MAIN PHOTO) --- */
+        /* --- ẢNH GỘP (MAIN PHOTO, RING, HY) --- */
         .envelope-section {
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 24px auto 24px auto;
+            margin: 24px auto;
             padding: 0 20px;
             opacity: 0;
             animation: fadeInUp 1.2s ease-out 1s forwards;
         }
 
+        .envelope-section.no-padding {
+            margin: 0;
+            padding: 0;
+        }
+
         .envelope-section img {
             width: 100%;
-            max-width: 300px;
             height: auto;
             display: block;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
             object-fit: cover;
             object-position: center top;
+        }
+
+        .img-lg {
+            max-width: 300px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .img-md {
+            max-width: 100px;
+        }
+
+        .img-sm {
+            max-width: 40px;
         }
 
         /* --- SCROLL ANIMATION --- */
         .scroll-element {
             opacity: 0;
             transition: all 1s ease-out;
+            will-change: opacity, transform;
         }
 
         .scroll-up {
@@ -372,62 +392,7 @@
             z-index: 0;
         }
 
-        .timeline-item {
-            display: flex;
-            margin-bottom: 30px;
-            text-align: left;
-            padding-bottom: 30px;
-            border-bottom: 1px dashed #eee;
-        }
-
-        .timeline-item:last-child {
-            border: none;
-        }
-
-        .t-time {
-            width: 70px;
-            font-weight: bold;
-            font-size: 1.2rem;
-            color: #222;
-            font-family: 'Playfair Display';
-            display: flex;
-            align-items: center;
-        }
-
-        .t-content {
-            flex: 1;
-            padding-left: 20px;
-            border-left: 2px solid #eee;
-        }
-
-        .map-preview img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            opacity: 0.8;
-            border-radius: 4px;
-        }
-
-        .map-link {
-            display: block;
-            background: #fff;
-            border: 1px solid #333;
-            color: #333;
-            padding: 10px;
-            text-decoration: none;
-            border-radius: 20px;
-            width: fit-content;
-            margin: 15px auto 0;
-            font-size: 0.9rem;
-            transition: all 0.3s;
-        }
-
-        .map-link:hover {
-            background: #333;
-            color: #fff;
-        }
-
-        /* --- STYLES CHO ALBUM ẢNH CƯỚI (Mới thêm vào) --- */
+        /* --- STYLES CHO ALBUM ẢNH CƯỚI --- */
         .wedding-album-wrapper {
             margin-top: 20px;
             position: relative;
@@ -438,7 +403,6 @@
             width: 100%;
             height: 0;
             padding-bottom: 125%;
-            /* Tỷ lệ dọc */
             overflow: hidden;
             border-radius: 4px;
             margin-bottom: 15px;
@@ -542,89 +506,7 @@
         .thumb.active {
             opacity: 1;
             border-color: var(--primary-color);
-            /* Viền đỏ theo theme */
             transform: scale(1.05);
-        }
-
-        /* --- GIFT BOX STYLE (Mới thêm) --- */
-        .gift-section {
-            display: flex;
-            justify-content: center;
-            margin: 30px 0;
-            padding: 0 20px;
-        }
-
-        .gift-card {
-            background: #fff;
-            border: 1px solid #e0e0e0;
-            border-radius: 12px;
-            padding: 8px;
-            display: flex;
-            align-items: center;
-            width: 100%;
-            max-width: 320px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .gift-card:active {
-            transform: scale(0.98);
-        }
-
-        .gift-card:hover {
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Phần ảnh bên trái */
-        .gift-thumb {
-            width: 100px;
-            height: 100px;
-            flex-shrink: 0;
-            border-radius: 8px;
-            overflow: hidden;
-            margin-right: 15px;
-            background: #eee;
-        }
-
-        .gift-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            /* Filter nhẹ để ảnh trông vintage giống mẫu */
-            filter: sepia(20%) contrast(90%);
-        }
-
-        /* Phần chữ bên phải */
-        .gift-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        .gift-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-            color: #333;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-
-        .gift-icon {
-            font-size: 1.8rem;
-            color: #555;
-            margin-top: 5px;
-        }
-
-        /* Hiệu ứng vẽ tay cho icon bao thư */
-        .gift-icon i {
-            transform: rotate(-5deg);
-            opacity: 0.8;
         }
 
         /* --- MODAL (POPUP NGÂN HÀNG) --- */
@@ -637,7 +519,6 @@
             background: rgba(0, 0, 0, 0.8);
             z-index: 1000;
             display: none;
-            /* Mặc định ẩn */
             justify-content: center;
             align-items: center;
             padding: 20px;
@@ -691,17 +572,14 @@
             }
         }
 
-        /* Nút tải ảnh QR */
         .download-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            /* Khoảng cách giữa icon và chữ */
             margin-top: 15px;
             padding: 8px 25px;
             background-color: var(--primary-color);
-            /* Màu đỏ chủ đạo */
             color: #fff;
             text-decoration: none;
             border-radius: 25px;
@@ -736,7 +614,6 @@
             border: 2px solid var(--primary-color);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             z-index: 9999;
-            /* Luôn nổi lên trên cùng */
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -749,7 +626,6 @@
             transform: scale(1.1);
         }
 
-        /* Khi nhạc đang chạy thì xoay icon cho sinh động */
         .music-control.playing {
             animation: spinMusic 4s linear infinite;
             background-color: var(--primary-color);
@@ -762,37 +638,24 @@
             }
         }
 
-        /* --- NÚT BACK TO TOP (Góc Phải - Dưới Cùng) --- */
+        /* --- NÚT BACK TO TOP --- */
         .back-to-top {
             position: fixed;
             bottom: 20px;
-            /* Cùng độ cao với nút nhạc */
             right: 20px;
-            /* Chuyển sang bên PHẢI */
-
             width: 50px;
-            /* Kích thước bằng nút nhạc cho cân đối */
             height: 50px;
             border-radius: 50%;
-
             background-color: #fff;
-            /* Nền trắng */
             color: var(--primary-color);
-            /* Mũi tên màu đỏ */
             border: 2px solid var(--primary-color);
-            /* Viền đỏ */
-
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             z-index: 9999;
-            /* Luôn nổi lên trên cùng */
             cursor: pointer;
-
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.2rem;
-
-            /* Hiệu ứng ẩn/hiện */
             opacity: 0;
             visibility: hidden;
             transform: translateY(20px);
@@ -803,27 +666,22 @@
             background-color: var(--primary-color);
             color: #fff;
             transform: translateY(0) scale(1.1);
-            /* Phóng to nhẹ khi di chuột */
         }
 
-        /* Class này được JS thêm vào khi cuộn xuống */
         .back-to-top.show {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
         }
 
-        /* --- ALBUM MASONRY (CÁI DÀI CÁI NGẮN) --- */
+        /* --- ALBUM MASONRY --- */
         .gallery-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            /* Chia 2 cột */
             grid-auto-rows: 200px;
-            /* Chiều cao CỐ ĐỊNH của 1 ô nhỏ (bạn có thể chỉnh số này) */
             gap: 10px;
             padding: 0 10px;
             margin-top: 20px;
-            /* Đảm bảo grid lấp đầy các khoảng trống nếu có */
             grid-auto-flow: dense;
         }
 
@@ -832,12 +690,10 @@
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            background: #eee;
+            background: #fff;
             cursor: pointer;
             width: 100%;
             height: 100%;
-            background: #fff;
-            /* Lấp đầy ô grid */
         }
 
         .gallery-item img {
@@ -845,7 +701,6 @@
             height: 100%;
             object-fit: cover;
             object-position: top center;
-            /* Cực quan trọng: Cắt ảnh vừa khung, không méo */
             transition: transform 0.5s ease;
         }
 
@@ -853,33 +708,26 @@
             transform: scale(1.1);
         }
 
-        /* --- CLASS CHO ẢNH DỌC (CAO) --- */
-        /* Class này sẽ làm ảnh chiếm chiều cao bằng 2 ảnh thường cộng lại */
         .gallery-item.tall {
             grid-row: span 2;
         }
 
-        /* --- ĐOẠN CSS THIẾT KẾ NGÀY THÁNG TỐI GIẢN --- */
+        /* --- THIẾT KẾ NGÀY THÁNG TỐI GIẢN --- */
         .date-display-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             font-family: 'Montserrat', sans-serif;
             color: #666;
-            /* Màu xám đen nhạt */
             margin-top: 15px;
-            /* Tạo khoảng cách với tên */
         }
 
         .date-top,
         .date-bottom {
             font-size: 0.75rem;
-            /* Kích thước chữ nhỏ */
             font-weight: 300;
             letter-spacing: 0.4em;
-            /* Khoảng cách chữ siêu rộng */
             margin-right: -0.4em;
-            /* Sửa lỗi căn giữa do letter-spacing dư ở ký tự cuối */
         }
 
         .date-middle {
@@ -888,7 +736,6 @@
             justify-content: center;
             margin: 10px 0;
             gap: 20px;
-            /* Khoảng cách giữa các cụm DEC, 20, 2025 */
         }
 
         .date-left,
@@ -901,16 +748,11 @@
 
         .date-center {
             font-size: 3.5rem;
-            /* Kích thước to, nhấn mạnh */
             font-weight: 100;
-            /* Nét cực mỏng */
             line-height: 1;
-            /* Loại bỏ khoảng trắng thừa của font */
             color: #333;
-            /* Màu đen đậm hơn một chút so với tháng/năm */
         }
 
-        /* Đáp ứng màn hình điện thoại nhỏ */
         @media (max-width: 360px) {
             .date-middle {
                 gap: 15px;
@@ -936,14 +778,6 @@
             color: #222;
             margin-bottom: 12px;
             font-weight: normal;
-        }
-
-        .elegant-subtitle {
-            font-family: sans-serif;
-            font-size: 0.75rem;
-            color: #888;
-            letter-spacing: 0.2em;
-            margin-bottom: 30px;
         }
 
         /* Countdown */
@@ -982,7 +816,6 @@
             font-size: 1.2rem;
             color: #222;
             margin-top: -15px;
-            /* Căn giữa dấu hai chấm với các con số */
             font-weight: 300;
         }
 
@@ -991,7 +824,6 @@
             display: flex;
             flex-direction: column;
             gap: 40px;
-            /* Khoảng cách giữa các hàng ngang */
             max-width: 320px;
             margin: 0 auto;
         }
@@ -1000,7 +832,6 @@
             display: flex;
             justify-content: center;
             gap: 60px;
-            /* Khoảng cách giữa 2 cột (Popcorn - Photobooth) */
         }
 
         .etl-item {
@@ -1015,7 +846,6 @@
             height: 35px;
             margin-bottom: 15px;
             color: #333;
-            /* Màu line-art */
         }
 
         .etl-icon svg {
@@ -1044,7 +874,7 @@
             margin-top: 5px;
         }
 
-        /* --- STYLES CHO BỐ CỤC SO LE (ALTERNATING GRID) --- */
+        /* --- STYLES CHO BỐ CỤC SO LE --- */
         .alternating-section {
             width: 100%;
             background: #ffffff;
@@ -1057,12 +887,10 @@
             min-height: 280px;
         }
 
-        /* Khi đảo ngược để tạo hình so le */
         .alt-row.reverse {
             flex-direction: row-reverse;
         }
 
-        /* Khung chứa chữ và nút bấm (chiếm 50%) */
         .alt-content-box {
             width: 50%;
             display: flex;
@@ -1074,7 +902,6 @@
             text-align: center;
         }
 
-        /* Khung chứa ảnh (chiếm 50%) */
         .alt-image-box {
             width: 50%;
             position: relative;
@@ -1090,9 +917,7 @@
             display: block;
         }
 
-        /* Label / Title */
         .alt-wedding-title {
-            /* font-family: 'Playfair Display', serif; */
             font-size: 1.05rem;
             letter-spacing: 0.05em;
             color: var(--primary-color);
@@ -1123,12 +948,6 @@
             padding: 0 4px;
         }
 
-        .alt-wedding-venue strong {
-            color: #222;
-            font-weight: 700;
-        }
-
-        /* Nút chỉ đường */
         .alt-map-btn {
             display: inline-flex;
             align-items: center;
@@ -1155,68 +974,7 @@
             color: #ffffff;
         }
 
-        /* --- STYLES CHO THẺ THÔNG TIN BÀI HÁT TỐI GIẢN --- */
-        .music-widget-card {
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 15px 20px;
-            max-width: 320px;
-            margin: 0 auto;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
-            border: 1px solid #f0f0f0;
-            text-align: left;
-        }
-
-        .mw-top-row {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .mw-thumbnail {
-            width: 50px;
-            height: 50px;
-            border-radius: 10px;
-            overflow: hidden;
-            flex-shrink: 0;
-            background: #eee;
-        }
-
-        .mw-thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .mw-info {
-            flex: 1;
-            overflow: hidden;
-        }
-
-        .mw-song-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1rem;
-            font-weight: 700;
-            color: #222;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .mw-artist {
-            font-family: 'Quicksand', sans-serif;
-            font-size: 0.75rem;
-            color: #777;
-            margin-top: 3px;
-        }
-
-        .mw-wave-icon {
-            color: #ccc;
-            font-size: 0.85rem;
-            padding-right: 5px;
-        }
-
-        /* --- STYLES CHO THẺ BOARDING PASS COMPACT (~100PX) --- */
+        /* --- STYLES CHO THẺ BOARDING PASS COMPACT --- */
         .bp-ticket-wrapper {
             display: flex;
             justify-content: center;
@@ -1230,7 +988,6 @@
             width: 100%;
             max-width: 420px;
             height: 105px;
-            /* Giới hạn chiều cao chuẩn ~100px */
             border-radius: 12px;
             display: flex;
             position: relative;
@@ -1245,7 +1002,6 @@
             transform: translateY(-2px);
         }
 
-        /* Dải màu trang trí dọc bên trái */
         .bp-left-strip {
             width: 22px;
             background-color: var(--primary-color);
@@ -1264,7 +1020,6 @@
             white-space: nowrap;
         }
 
-        /* Phần nội dung chính bên trái */
         .bp-main-section {
             flex: 2.5;
             padding: 10px 12px;
@@ -1328,7 +1083,6 @@
             font-weight: 600;
         }
 
-        /* Đường rãnh xé vé nét đứt */
         .bp-perforation {
             width: 0;
             border-left: 2px dashed #d1c2b4;
@@ -1336,7 +1090,6 @@
             position: relative;
         }
 
-        /* Cuống vé bên phải (QR Code) */
         .bp-stub-section {
             flex: 1;
             padding: 10px;
@@ -1371,46 +1124,6 @@
             margin-top: 4px;
             font-weight: 600;
         }
-
-        /* --- ẢNH CHÍNH (MAIN PHOTO) --- */
-        .envelope-section-1 {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 24px auto 24px auto;
-            padding: 0 20px;
-            opacity: 0;
-            animation: fadeInUp 1.2s ease-out 1s forwards;
-        }
-
-        .envelope-section-1 img {
-            width: 100%;
-            max-width: 100px;
-            height: auto;
-            display: block;
-            object-fit: cover;
-            object-position: center top;
-        }
-
-        /* --- ẢNH CHÍNH (MAIN PHOTO) --- */
-        .envelope-section-2 {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0;
-            padding: 0;
-            opacity: 0;
-            animation: fadeInUp 1.2s ease-out 1s forwards;
-        }
-
-        .envelope-section-2 img {
-            width: 100%;
-            max-width: 40px;
-            height: auto;
-            display: block;
-            object-fit: cover;
-            object-position: center top;
-        }
     </style>
 </head>
 
@@ -1422,13 +1135,14 @@
         </div>
 
         <div class="envelope-section">
-            <img src="./assets/main.jpg" alt="Wedding">
+            <img class="img-lg" src="./assets/main.jpg" alt="Wedding">
         </div>
+
         <div class="header">
             <div class="names-container">
                 <span class="name-part left">TRIỂN</span>
-                <div class="envelope-section-2">
-                    <img src="./assets/ring.png" alt="Wedding">
+                <div class="envelope-section no-padding">
+                    <img class="img-sm" src="./assets/ring.png" alt="Wedding">
                 </div>
                 <span class="name-part right">LINH</span>
             </div>
@@ -1444,24 +1158,6 @@
             </div>
         </div>
 
-        <!-- THẺ THÔNG TIN BÀI HÁT TỐI GIẢN
-        <div class="content-block scroll-element scroll-from-left">
-            <div class="music-widget-card">
-                <div class="mw-top-row">
-                    <div class="mw-thumbnail">
-                        <img src="./assets/wd1.jpg" alt="Mai Mai Ben Nhau Album">
-                    </div>
-                    <div class="mw-info">
-                        <div class="mw-song-title">Mãi Mãi Bên Nhau</div>
-                        <div class="mw-artist">Noo Phước Thịnh</div>
-                    </div>
-                    <div class="mw-wave-icon">
-                        <i class="fa-solid fa-music"></i>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!-- KẾT THÚC THẺ THÔNG TIN BÀI HÁT -->
         <div id="mainContent">
             <div class="content-block" style="padding-top: 0;">
                 <div class="scroll-element scroll-up">
@@ -1497,13 +1193,11 @@
                 </div>
             </div>
 
-
-
             <div class="content-block"
-                style="margin-top: 30px; margin-bottom: 30px; padding: 20PX 20px; background: #fafafa;">
+                style="margin-top: 30px; margin-bottom: 30px; padding: 20px; background: #fafafa;">
 
                 <div class="envelope-section">
-                    <img src="./assets/middle.jpg" alt="Wedding">
+                    <img class="img-lg" src="./assets/middle.jpg" alt="Wedding">
                 </div>
                 <div class="scroll-element scroll-from-left">
                     <h3
@@ -1525,8 +1219,8 @@
                         <h4 style="color: #8E0E0E !important">VÀO LÚC: 13 GIỜ 00 - CHỦ NHẬT 25/10/2026</h4>
                         <h4 style="color: #8E0E0E !important">(NHẰM NGÀY 16 THÁNG 9 NĂM BÍNH NGỌ)</h4>
                     </div>
-                    <div class="envelope-section-1">
-                        <img src="./assets/hy.png" alt="Wedding">
+                    <div class="envelope-section">
+                        <img class="img-md" src="./assets/hy.png" alt="Wedding">
                     </div>
                     <div class="family-box scroll-element scroll-from-left">
                         <h4 style="color: #8E0E0E !important">LỄ THÀNH HÔN ĐƯỢC CỬ HÀNH TẠI TƯ GIA NHÀ TRAI</h4>
@@ -1552,37 +1246,7 @@
                 </div>
             </div>
 
-            <!-- <div class="content-block scroll-element scroll-up">
-                <h2 class="section-title">Địa Điểm</h2>
-                <h3 class="">Nhà Trai</p>
-                    <p style="font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">
-                        SỰ KIỆN HẰNG HÂN
-                    </p>
-                    <p style="color: #666; font-size: 0.9rem; margin-top: 5px; margin-bottom: 20px;">Thôn Phú Nhiêu, Xã
-                        Phú
-                        Xuyên, TP. Hà
-                        Nội
-                    </p>
-                    <div class="map-preview" style="margin-bottom: 20px;">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4425.3710785898875!2d105.88370627583626!3d20.762181396880127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135b7006d331c93%3A0xdfd55d6ae29c644c!2zU-G7sSBraeG7h24gSMOibiBo4bqxbmc!5e1!3m2!1sen!2s!4v1765596685653!5m2!1sen!2s"
-                            width="380" height="280" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-
-                    <h3 class="">Nhà Gái</p>
-                        <p style="font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">
-                            TẠI GIA ĐÌNH NHÀ GÁI
-                        </p>
-                        <p style="color: #666; font-size: 0.9rem; margin-top: 5px; margin-bottom: 20px;">Số 73 Đình
-                            Thượng, Nội Thôn, Hồng Vân, TP Hài Nội
-                        </p>
-            </div> -->
-
-            <!-- ĐOẠN COUNTDOWN & TIMELINE MỚI -->
             <div class="elegant-section scroll-element scroll-up">
-
-                <!-- COUNTDOWN -->
                 <h2 class="elegant-title">C O U N T D O W N</h2>
 
                 <div class="elegant-countdown">
@@ -1609,11 +1273,9 @@
             </div>
 
             <div class="content-block scroll-element scroll-up" style="background: #fafafa;">
-                <!-- TIMELINE MỚI -->
                 <h2 class="elegant-title" style="margin-bottom: 20px;">T I M E L I N E</h2>
 
                 <div class="elegant-timeline">
-                    <!-- Hàng 1: Đón Khách (15:30) -->
                     <div class="etl-row">
                         <div class="etl-item">
                             <div class="etl-icon">
@@ -1628,7 +1290,6 @@
                         </div>
                     </div>
 
-                    <!-- Hàng 2: Khai Tiệc (16:30) -->
                     <div class="etl-row">
                         <div class="etl-item">
                             <div class="etl-icon">
@@ -1645,7 +1306,6 @@
                         </div>
                     </div>
 
-                    <!-- Hàng 3: Party (20:00) -->
                     <div class="etl-row">
                         <div class="etl-item">
                             <div class="etl-icon">
@@ -1663,10 +1323,7 @@
                 </div>
             </div>
 
-            <!-- KHỐI SO LE THÔNG TIN TIỆC CƯỚI 2 NHÀ -->
             <div class="alternating-section scroll-element scroll-up">
-
-                <!-- NHÀ TRAI -->
                 <div class="alt-row">
                     <div class="alt-image-box">
                         <img src="./assets/wd2.jpg" alt="Tiệc cưới nhà trai">
@@ -1674,7 +1331,7 @@
                     <div class="alt-content-box">
                         <h2 class="alt-wedding-title">Tiệc Cưới Nhà Trai</h2>
                         <div class="alt-wedding-time">
-                            Thứ Bảy - 10h 24.10.2026
+                            Thứ Bảy - <span class="evt-time">10h</span> 24.10.2026
                         </div>
                         <div class="alt-wedding-venue">
                             Tại tư gia nhà trai<br>
@@ -1686,7 +1343,6 @@
                     </div>
                 </div>
 
-                <!-- NHÀ GÁI -->
                 <div class="alt-row reverse">
                     <div class="alt-image-box">
                         <img src="./assets/wd1.jpg" alt="Tiệc cưới nhà gái">
@@ -1694,7 +1350,7 @@
                     <div class="alt-content-box">
                         <h2 class="alt-wedding-title">Tiệc Cưới Nhà Gái</h2>
                         <div class="alt-wedding-time">
-                            Thứ Bảy - 16h 24.10.2026
+                            Thứ Bảy - 16:00 PM 24.10.2026
                         </div>
                         <div class="alt-wedding-venue">
                             Tại tư gia nhà gái<br>
@@ -1706,21 +1362,15 @@
                         </a>
                     </div>
                 </div>
-
             </div>
-            <!-- KẾT THÚC KHỐI SO LE -->
 
-            <!-- THẺ VÉ MÁY BAY / BOARDING PASS COMPACT (CHIỀU CAO ~100PX) -->
             <div class="content-block scroll-element scroll-up">
                 <div class="bp-ticket-wrapper">
                     <div class="bp-ticket" onclick="toggleModal(true)">
-
-                        <!-- DẢI MÀU BÊN TRÁI -->
                         <div class="bp-left-strip">
                             <span>MỪNG CƯƠÍ</span>
                         </div>
 
-                        <!-- NỘI DUNG CHÍNH BÊN TRÁI -->
                         <div class="bp-main-section">
                             <div class="bp-top-line">
                                 <span class="bp-family-text">SAVE THE DATE</span>
@@ -1741,21 +1391,17 @@
                             </div>
                         </div>
 
-                        <!-- ĐƯỜNG RÃNH XÉ VÉ NÉT ĐỨT -->
                         <div class="bp-perforation"></div>
 
-                        <!-- CUỐNG VÉ BÊN PHẢI (QR CODE) -->
                         <div class="bp-stub-section">
                             <div class="bp-qr-box">
                                 <img src="./assets/qr.png" alt="QR Mừng Cưới">
                             </div>
                             <span class="bp-qr-label">Scan Here</span>
                         </div>
-
                     </div>
                 </div>
             </div>
-            <!-- KẾT THÚC THẺ COMPACT -->
 
             <div class="modal-overlay" id="bankModal">
                 <div class="bank-info-box">
@@ -1776,39 +1422,34 @@
                     <p>Chủ TK: VU TIEN TRIEN</p>
                 </div>
             </div>
+
             <div class="content-block">
                 <h2 class="section-title">Album Ảnh Cưới</h2>
-                <p style="font-style: italic; color: #888; margin-bottom: 15px; font-size: 0.9rem;">Những khoảnh
-                    khắc
+                <p style="font-style: italic; color: #888; margin-bottom: 15px; font-size: 0.9rem;">Những khoảnh khắc
                     đẹp nhất</p>
 
                 <div class="gallery-grid">
                     <div class="gallery-item tall scroll-element scroll-from-left">
-                        <img src="./assets/wd1.jpg" alt="1">
+                        <img src="./assets/wd1m.jpg" alt="1">
                     </div>
-
                     <div class="gallery-item scroll-element scroll-from-right">
                         <img src="./assets/wd2.jpg" alt="2">
                     </div>
-
                     <div class="gallery-item scroll-element scroll-from-right">
                         <img src="./assets/wd3.jpg" alt="3">
                     </div>
-
-
                     <div class="gallery-item scroll-element scroll-from-left">
                         <img src="./assets/wd4.jpg" alt="4">
                     </div>
-
                     <div class="gallery-item tall scroll-element scroll-from-right">
                         <img src="./assets/wd5.jpg" alt="5">
                     </div>
-
                     <div class="gallery-item scroll-element scroll-from-left">
                         <img src="./assets/wd6.jpg" alt="6">
                     </div>
                 </div>
             </div>
+
             <div class="content-block scroll-element scroll-up">
                 <div class="wedding-album-wrapper">
                     <div class="main-stage">
@@ -1823,28 +1464,22 @@
                     </div>
                 </div>
             </div>
-            <div class="content-block">
 
+            <div class="content-block">
                 <div class="names-container">
                     <span class="name-part scroll-element scroll-from-left">Tiến Triển</span>
-
                     <span class="name-part symbol scroll-element scroll-up">&</span>
-
                     <span class="name-part scroll-element scroll-from-right">Thuỳ Linh</span>
                 </div>
-
                 <div class="date-highlight" style="margin-top: 20px; margin-bottom: 20px;">24 . 10 . 2026</div>
-
                 <p class="scroll-element scroll-up" style="font-family: 'Dancing Script'; font-size: 1.6rem;">
                     Rất Hân Hạnh Được Đón Tiếp!
                 </p>
-
             </div>
         </div>
     </div>
 
     <!-- nhạc nền  -->
-
     <audio id="bg-music" loop preload="auto" playsinline webkit-playsinline src="./assets/wedding.mp3">
         <source src="./assets/wedding.mp3" type="audio/mpeg">
     </audio>
@@ -1865,7 +1500,6 @@
             const daysInMonth = new Date(year, month, 0).getDate();
             container.innerHTML = "";
 
-            // Hỗ trợ truyền mảng hoặc 1 ngày lẻ
             const highlights = Array.isArray(highlightDays) ? highlightDays : [highlightDays];
 
             let startDay = date.getDay();
@@ -1892,52 +1526,18 @@
         }
 
         /* --- JS CHO PHẦN ALBUM ẢNH --- */
-        // Danh sách ảnh mẫu (Bạn hãy thay link ảnh của bạn vào đây)
         const albumPhotos = [
-            {
-                url: './assets/wd3.jpg',
-                caption: "Nơi tình yêu bắt đầu"
-            },
-            {
-                url: './assets/wd7.jpg',
-                caption: "Ngày đôi mình chung đôi"
-            },
-            {
-                url: './assets/wd8.jpg',
-                caption: "Nắm tay nhau đi khắp thế gian"
-            },
-            {
-                url: './assets/wd9.jpg',
-                caption: "Bình yên là khi có anh"
-            },
-            {
-                url: './assets/wd10.jpg',
-                caption: "Đúng người, đúng thời điểm"
-            },
-            {
-                url: './assets/wd11.jpg',
-                caption: "Về chung một mái nhà"
-            },
-            {
-                url: './assets/wd6.jpg',
-                caption: "Mảnh ghép hoàn hảo"
-            },
-            {
-                url: './assets/wd5.jpg',
-                caption: "Cùng nhau già đi nhé"
-            },
-            {
-                url: './assets/wd4.jpg',
-                caption: "Hạnh phúc trọn vẹn"
-            },
-            {
-                url: './assets/wd2.jpg',
-                caption: "Chuyện tình mình đẹp như thơ"
-            },
-            {
-                url: './assets/wd1.jpg',
-                caption: "Mãi mãi một tình yêu"
-            }
+            { url: './assets/wd3.jpg', caption: "Nơi tình yêu bắt đầu" },
+            { url: './assets/wd12m.jpg', caption: "Ngày đôi mình chung đôi" },
+            { url: './assets/wd13m.jpg', caption: "Nắm tay nhau đi khắp thế gian" },
+            { url: './assets/wd14m.jpg', caption: "Bình yên là khi có anh" },
+            { url: './assets/wd15m.jpg', caption: "Đúng người, đúng thời điểm" },
+            { url: './assets/wd11.jpg', caption: "Về chung một mái nhà" },
+            { url: './assets/wd6.jpg', caption: "Mảnh ghép hoàn hảo" },
+            { url: './assets/wd5.jpg', caption: "Cùng nhau già đi nhé" },
+            { url: './assets/wd4.jpg', caption: "Hạnh phúc trọn vẹn" },
+            { url: './assets/wd2.jpg', caption: "Chuyện tình mình đẹp như thơ" },
+            { url: './assets/wd1.jpg', caption: "Mãi mãi một tình yêu" }
         ];
 
         let currentAlbumIndex = 0;
@@ -1946,24 +1546,17 @@
         const thumbContainer = document.getElementById('thumbnail-list');
 
         function initAlbum() {
-            // Hiển thị ảnh đầu tiên
             updateMainImage();
-
-            // Tạo thumbnails
-            // Xóa nội dung cũ để tránh trùng lặp nếu chạy lại
             thumbContainer.innerHTML = '';
-
             albumPhotos.forEach((photo, index) => {
                 const img = document.createElement('img');
                 img.src = photo.url;
                 img.classList.add('thumb');
                 if (index === 0) img.classList.add('active');
-
                 img.addEventListener('click', () => {
                     currentAlbumIndex = index;
                     updateMainImage();
                 });
-
                 thumbContainer.appendChild(img);
             });
         }
@@ -1977,10 +1570,12 @@
             }, 200);
 
             const allThumbs = document.querySelectorAll('.thumb');
+            const container = document.getElementById('thumbnail-list');
             allThumbs.forEach((thumb, index) => {
                 if (index === currentAlbumIndex) {
                     thumb.classList.add('active');
-                    thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                    const scrollPos = thumb.offsetLeft - (container.offsetWidth / 2) + (thumb.offsetWidth / 2);
+                    container.scrollTo({ left: scrollPos, behavior: 'smooth' });
                 } else {
                     thumb.classList.remove('active');
                 }
@@ -2007,21 +1602,18 @@
             }
         }
 
-        // Đóng modal khi bấm ra ngoài vùng trắng
         document.getElementById('bankModal').addEventListener('click', function (e) {
             if (e.target === this) {
                 toggleModal(false);
             }
         });
 
-        /* --- CẤU HÌNH NHẠC NỀN (TỐI ƯU CHO WEBVIEW MESSENGER, ZALO, SAFARI, CHROME) --- */
+        /* --- CẤU HÌNH NHẠC NỀN --- */
         const bgMusic = document.getElementById('bg-music');
         const musicBtn = document.getElementById('music-btn');
         const musicIcon = document.getElementById('music-icon');
-
         let userManuallyPaused = false;
 
-        // Cập nhật giao diện nút bấm nhạc (Xoay/Dừng, Icon)
         function updateMusicUI(isPlaying) {
             if (!musicBtn || !musicIcon) return;
             if (isPlaying) {
@@ -2035,38 +1627,28 @@
             }
         }
 
-        // Hàm phát nhạc an toàn
         function attemptPlayAudio(silent = false) {
             if (!bgMusic || userManuallyPaused) return;
-
             if (!bgMusic.paused) {
                 updateMusicUI(true);
                 removeInteractionListeners();
                 return;
             }
-
             const playPromise = bgMusic.play();
             if (playPromise !== undefined) {
                 playPromise.then(() => {
                     updateMusicUI(true);
                     removeInteractionListeners();
                 }).catch(err => {
-                    if (!silent) {
-                        console.log("Audio play waiting for user gesture:", err.message);
-                    }
+                    if (!silent) console.log("Audio play waiting for user gesture:", err.message);
                     updateMusicUI(false);
                 });
             }
         }
 
-        // Hàm bật/tắt nhạc khi bấm trực tiếp vào nút
         function toggleMusic(e) {
-            if (e) {
-                e.stopPropagation();
-            }
-
+            if (e) e.stopPropagation();
             if (!bgMusic) return;
-
             if (bgMusic.paused) {
                 userManuallyPaused = false;
                 bgMusic.play().then(() => {
@@ -2083,35 +1665,26 @@
             }
         }
 
-        // Xử lý sự kiện tương tác chạm / click từ người dùng
         function handleUserInteraction() {
             if (userManuallyPaused) return;
             attemptPlayAudio(false);
         }
 
         const interactionEvents = ['click', 'touchend', 'pointerdown'];
-
         function addInteractionListeners() {
             interactionEvents.forEach(evt => {
                 document.addEventListener(evt, handleUserInteraction, { passive: true });
             });
         }
-
         function removeInteractionListeners() {
             interactionEvents.forEach(evt => {
                 document.removeEventListener(evt, handleUserInteraction);
             });
         }
-
-        // Kích hoạt lắng nghe tương tác ngay khi trang tải
         addInteractionListeners();
-
-        // --- CÁC HÀM KHÁC CỦA TRANG WEB ---
-        // (Giữ nguyên các hàm lịch, mở phong bì của bạn ở đây)
 
         /* --- XỬ LÝ NÚT BACK TO TOP --- */
         const backToTopBtn = document.getElementById('back-to-top-btn');
-
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
                 backToTopBtn.classList.add('show');
@@ -2121,67 +1694,48 @@
         });
 
         function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        /* --- HÀM TIỆN ÍCH DECODE URL CHUNG --- */
+        function decodeUrlParam(paramValue) {
+            if (!paramValue) return null;
+            let decoded = paramValue;
+            try {
+                for (let i = 0; i < 3; i++) {
+                    if (!decoded.includes('%')) break;
+                    const next = decodeURIComponent(decoded);
+                    if (next === decoded) break;
+                    decoded = next;
+                }
+            } catch (e) { }
+            return decoded.replace(/\+/g, ' ').replace(/%20/g, ' ').trim();
         }
 
         /* --- TỰ ĐỘNG LẤY TÊN KHÁCH VÀ THỜI GIAN TỪ URL --- */
         function checkGuestName() {
             const urlParams = new URLSearchParams(window.location.search);
-            let guestName = urlParams.get('k') || urlParams.get('guest');
-            if (guestName) {
-                try {
-                    // Xử lý decode đa tầng (tránh lỗi double-encoding của Messenger/Zalo WebView)
-                    let decoded = guestName;
-                    for (let i = 0; i < 3; i++) {
-                        if (!decoded.includes('%')) break;
-                        const next = decodeURIComponent(decoded);
-                        if (next === decoded) break;
-                        decoded = next;
-                    }
-                    // Thay thế tất cả %20 hoặc + còn sót lại thành khoảng trắng
-                    guestName = decoded.replace(/\+/g, ' ').replace(/%20/g, ' ').trim();
-                } catch (e) {
-                    guestName = guestName.replace(/%20/g, ' ').replace(/\+/g, ' ').trim();
-                }
 
+            // Xử lý Tên khách
+            const guestName = decodeUrlParam(urlParams.get('k') || urlParams.get('guest'));
+            if (guestName) {
                 const guestEl = document.getElementById('guest-name');
-                if (guestEl && guestName) {
-                    guestEl.innerText = guestName;
-                }
+                if (guestEl) guestEl.innerText = guestName;
             }
 
-            // Lấy tham số thời gian (t hoặc time)
-            let eventTime = urlParams.get('t') || urlParams.get('time');
+            // Xử lý Thời gian
+            const eventTime = decodeUrlParam(urlParams.get('t') || urlParams.get('time'));
             if (eventTime) {
-                try {
-                    let decodedTime = eventTime;
-                    for (let i = 0; i < 3; i++) {
-                        if (!decodedTime.includes('%')) break;
-                        const next = decodeURIComponent(decodedTime);
-                        if (next === decodedTime) break;
-                        decodedTime = next;
-                    }
-                    eventTime = decodedTime.replace(/\+/g, ' ').replace(/%20/g, ' ').trim();
-                } catch (e) {
-                    eventTime = eventTime.replace(/%20/g, ' ').replace(/\+/g, ' ').trim();
-                }
-
                 const dateBottomEl = document.querySelector('.date-bottom');
-                if (dateBottomEl && eventTime) {
-                    dateBottomEl.innerText = eventTime;
-                }
+                const evtTimeEl = document.querySelector('.evt-time');
+                if (dateBottomEl) dateBottomEl.innerText = eventTime;
+                if (evtTimeEl) evtTimeEl.innerText = eventTime;
             }
         }
 
-
-        /* --- JS ĐẾM NGƯỢC THỜI GIAN MỚI (24/10/2026) --- */
+        /* --- JS ĐẾM NGƯỢC THỜI GIAN --- */
         function initElegantCountdown() {
-            // Đặt thời gian lễ cưới: Thứ 7, 24/10/2026 lúc 16:30 chiều
             const countDownDate = new Date("Oct 24, 2026 16:30:00").getTime();
-
             const x = setInterval(function () {
                 const now = new Date().getTime();
                 const distance = countDownDate - now;
@@ -2200,7 +1754,6 @@
                 const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-                // Hiển thị ra màn hình (đảm bảo luôn có 2 chữ số)
                 document.getElementById("ecd-days").innerText = String(days).padStart(2, '0');
                 document.getElementById("ecd-hours").innerText = String(hours).padStart(2, '0');
                 document.getElementById("ecd-minutes").innerText = String(minutes).padStart(2, '0');
@@ -2210,9 +1763,9 @@
 
         /* --- KHỞI CHẠY TRANG WEB --- */
         function initPage() {
-            if (typeof createCalendar === "function") createCalendar(2026, 10, [24, 25]);
-            if (typeof initScrollObserver === "function") initScrollObserver();
-            if (typeof initAlbum === "function") initAlbum();
+            createCalendar(2026, 10, [24, 25]);
+            initScrollObserver();
+            initAlbum();
             checkGuestName();
             initElegantCountdown();
             attemptPlayAudio(true);
