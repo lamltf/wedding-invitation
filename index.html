@@ -1286,7 +1286,7 @@
                             </div>
                             <div class="etl-text-title">ĐÓN KHÁCH<br><span class="etl-text-sub">Chụp hình
                                     check-in</span></div>
-                            <div class="etl-text-time">17:00 PM</div>
+                            <div class="etl-text-time" id="tl-donkhach-time">17:00 PM</div>
                         </div>
                     </div>
 
@@ -1302,11 +1302,11 @@
                             </div>
                             <div class="etl-text-title">KHAI TIỆC<br><span class="etl-text-sub">Làm lễ và dùng
                                     tiệc</span></div>
-                            <div class="etl-text-time">18:00 PM</div>
+                            <div class="etl-text-time" id="tl-khaitiec-time">17:30 PM</div>
                         </div>
                     </div>
 
-                    <div class="etl-row">
+                    <div class="etl-row" id="tl-party-row">
                         <div class="etl-item">
                             <div class="etl-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
@@ -1317,7 +1317,7 @@
                             </div>
                             <div class="etl-text-title">PARTY<br><span class="etl-text-sub">Giao lưu âm nhạc</span>
                             </div>
-                            <div class="etl-text-time">20:00 PM</div>
+                            <div class="etl-text-time" id="tl-party-time">20:00 PM</div>
                         </div>
                     </div>
                 </div>
@@ -1711,7 +1711,7 @@
             return decoded.replace(/\+/g, ' ').replace(/%20/g, ' ').trim();
         }
 
-        /* --- TỰ ĐỘNG LẤY TÊN KHÁCH VÀ THỜI GIAN TỪ URL --- */
+        /* --- TỰ ĐỘNG LẤY TÊN KHÁCH, THỜI GIAN VÀ BÊN TỔ CHỨC TỪ URL --- */
         function checkGuestName() {
             const urlParams = new URLSearchParams(window.location.search);
 
@@ -1730,11 +1730,57 @@
                 if (dateBottomEl) dateBottomEl.innerText = eventTime;
                 if (evtTimeEl) evtTimeEl.innerText = eventTime;
             }
+
+            // Xử lý Bên tổ chức (Nhà Trai / Nhà Gái)
+            const sideParam = (decodeUrlParam(urlParams.get('s') || urlParams.get('side') || urlParams.get('nha') || urlParams.get('party')) || '').toLowerCase();
+            const isGai = sideParam === 'gai' || sideParam === 'nhagai' || sideParam === '2';
+
+            if (isGai) {
+                // Cập nhật thông tin ngày cho Nhà Gái: 25/10/2026
+                document.querySelectorAll('.date-highlight').forEach(el => {
+                    el.innerText = '25 . 10 . 2026';
+                });
+                const dateTopEl = document.querySelector('.date-top');
+                if (dateTopEl) dateTopEl.innerText = 'Chủ Nhật';
+                const dateCenterEl = document.querySelector('.date-center');
+                if (dateCenterEl) dateCenterEl.innerText = '25';
+                const bpDateBadge = document.querySelector('.bp-date-badge');
+                if (bpDateBadge) bpDateBadge.innerText = '25 . 10 . 2026';
+                document.querySelectorAll('.bp-val').forEach(el => {
+                    if (el.innerText.trim() === '24 / 10') el.innerText = '25 / 10';
+                });
+
+                // Timeline Nhà Gái: Đón khách: 09:00 AM, Khai Tiệc: 10:00 AM, Bỏ Party
+                const donKhachTime = document.getElementById('tl-donkhach-time');
+                if (donKhachTime) donKhachTime.innerText = '09:00 AM';
+                const khaiTiecTime = document.getElementById('tl-khaitiec-time');
+                if (khaiTiecTime) khaiTiecTime.innerText = '10:00 AM';
+                const partyRow = document.getElementById('tl-party-row');
+                if (partyRow) partyRow.style.display = 'none';
+
+                if (!eventTime) {
+                    const dateBottomEl = document.querySelector('.date-bottom');
+                    if (dateBottomEl) dateBottomEl.innerText = '10:00 AM';
+                }
+            } else {
+                // Timeline Nhà Trai: Đón khách: 17:00 PM, Khai Tiệc: 17:30 PM, Party: 20:00 PM
+                const donKhachTime = document.getElementById('tl-donkhach-time');
+                if (donKhachTime) donKhachTime.innerText = '17:00 PM';
+                const khaiTiecTime = document.getElementById('tl-khaitiec-time');
+                if (khaiTiecTime) khaiTiecTime.innerText = '17:30 PM';
+                const partyRow = document.getElementById('tl-party-row');
+                if (partyRow) partyRow.style.display = '';
+            }
         }
 
         /* --- JS ĐẾM NGƯỢC THỜI GIAN --- */
         function initElegantCountdown() {
-            const countDownDate = new Date("Oct 24, 2026 16:30:00").getTime();
+            const urlParams = new URLSearchParams(window.location.search);
+            const sideParam = (decodeUrlParam(urlParams.get('s') || urlParams.get('side') || urlParams.get('nha') || urlParams.get('party')) || '').toLowerCase();
+            const isGai = sideParam === 'gai' || sideParam === 'nhagai' || sideParam === '2';
+
+            const targetDateStr = isGai ? "Oct 25, 2026 10:00:00" : "Oct 24, 2026 10:00:00";
+            const countDownDate = new Date(targetDateStr).getTime();
             const x = setInterval(function () {
                 const now = new Date().getTime();
                 const distance = countDownDate - now;
