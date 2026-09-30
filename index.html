@@ -1746,29 +1746,27 @@
                 if (dateCenterEl) dateCenterEl.innerText = '25';
                 const bpDateBadge = document.querySelector('.bp-date-badge');
                 if (bpDateBadge) bpDateBadge.innerText = '25 . 10 . 2026';
-                document.querySelectorAll('.bp-val').forEach(el => {
-                    if (el.innerText.trim() === '24 / 10') el.innerText = '25 / 10';
-                });
-
-                // Timeline Nhà Gái: Đón khách: 09:00 AM, Khai Tiệc: 10:00 AM, Bỏ Party
-                const donKhachTime = document.getElementById('tl-donkhach-time');
-                if (donKhachTime) donKhachTime.innerText = '09:00 AM';
-                const khaiTiecTime = document.getElementById('tl-khaitiec-time');
-                if (khaiTiecTime) khaiTiecTime.innerText = '10:00 AM';
-                const partyRow = document.getElementById('tl-party-row');
-                if (partyRow) partyRow.style.display = 'none';
-
                 if (!eventTime) {
                     const dateBottomEl = document.querySelector('.date-bottom');
                     if (dateBottomEl) dateBottomEl.innerText = '10:00 AM';
                 }
+            }
+
+            // Xử lý Timeline dựa theo eventTime (nếu 10:00 -> Đón khách: 09:00 AM, Khai Tiệc: 10:00 AM, Bỏ Party; nếu 17:30 -> Đón khách: 17:00 PM, Khai Tiệc: 17:30 PM, Party: 20:00 PM)
+            const effectiveTime = eventTime || (isGai ? '10:00 AM' : '17:30 PM');
+            const isMorningEvent = effectiveTime.includes('10:00') || effectiveTime.includes('10h') || effectiveTime.includes('10') || effectiveTime.includes('09') || effectiveTime.toLowerCase().includes('am');
+
+            const donKhachTime = document.getElementById('tl-donkhach-time');
+            const khaiTiecTime = document.getElementById('tl-khaitiec-time');
+            const partyRow = document.getElementById('tl-party-row');
+
+            if (isMorningEvent) {
+                if (donKhachTime) donKhachTime.innerText = '09:00 AM';
+                if (khaiTiecTime) khaiTiecTime.innerText = '10:00 AM';
+                if (partyRow) partyRow.style.display = 'none';
             } else {
-                // Timeline Nhà Trai: Đón khách: 17:00 PM, Khai Tiệc: 17:30 PM, Party: 20:00 PM
-                const donKhachTime = document.getElementById('tl-donkhach-time');
                 if (donKhachTime) donKhachTime.innerText = '17:00 PM';
-                const khaiTiecTime = document.getElementById('tl-khaitiec-time');
                 if (khaiTiecTime) khaiTiecTime.innerText = '17:30 PM';
-                const partyRow = document.getElementById('tl-party-row');
                 if (partyRow) partyRow.style.display = '';
             }
         }
